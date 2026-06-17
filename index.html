@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="classic">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Objetivos — Planilha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --max: 1240px;
+      --shadow: 0 22px 70px rgba(65, 47, 32, 0.12);
+      --shadow-soft: 0 10px 30px rgba(65, 47, 32, 0.08);
+      --transition: 220ms ease;
+    }
+
+    html[data-theme="classic"]{
+      --bg: #f4efe7;
+      --bg-2: #ece3d6;
+      --paper: rgba(255, 251, 246, 0.78);
+      --paper-strong: rgba(255,255,255,0.88);
+      --ink: #241c17;
+      --muted: #76695f;
+      --line: rgba(72, 52, 38, 0.14);
+      --accent: #91684a;
+      --accent-deep: #5e412d;
+      --accent-soft: rgba(145,104,74,0.10);
+      --success: #3d6b4e;
+      --danger: #8d4d43;
+      --grid-line: rgba(255,255,255,0.12);
+      --surface-border: rgba(255,255,255,0.72);
+      --surface-highlight: linear-gradient(135deg, rgba(255,255,255,0.42), transparent 26%), linear-gradient(180deg, transparent, rgba(255,255,255,0.18));
+      --table-head: rgba(255,255,255,0.58);
+      --input-bg: rgba(255,255,255,0.08);
+      --input-bg-hover: rgba(255,255,255,0.26);
+      --input-bg-focus: rgba(255,255,255,0.82);
+      --pill-bg: linear-gradient(180deg, #ffffff, #efe3d6);
+      --checkbox-bg: rgba(255,255,255,0.72);
+      --hero-bg:
+        radial-gradient(circle at 12% 18%, rgba(217, 192, 166, 0.48), transparent 24%),
+        radial-gradient(circle at 88% 10%, rgba(145, 104, 74, 0.10), transparent 20%),
+        radial-gradient(circle at 80% 90%, rgba(145, 104, 74, 0.08), transparent 24%),
+        linear-gradient(180deg, #faf6f0 0%, var(--bg) 52%, var(--bg-2) 100%);
+      --mini-box-bg: rgba(255,255,255,0.52);
+      --mini-box-border: rgba(72,52,38,0.08);
+      --sheet-frame-bg: rgba(255,255,255,0.42);
+      --sheet-frame-border: rgba(72,52,38,0.10);
+      --badge-border: rgba(72,52,38,0.10);
+      --count-border: rgba(72,52,38,0.10);
+      --danger-soft: rgba(141,77,67,0.08);
+      --danger-border: rgba(141,77,67,0.14);
+      --selected-row: linear-gradient(180deg, rgba(141,77,67,0.10), rgba(141,77,67,0.06));
+      --selected-outline: rgba(141,77,67,0.18);
+      --move-soft: rgba(61,107,78,0.08);
+      --move-border: rgba(61,107,78,0.14);
+      --toast-bg: rgba(36,28,23,0.94);
+      --widget-shell: rgba(255,255,255,0.44);
+      --widget-border: rgba(72,52,38,0.10);
+      --radio-bg: linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.36));
+      --radio-border: rgba(72,52,38,.10);
+      --radio-text: var(--ink);
+      --radio-subtle: var(--muted);
+      --radio-button-bg: linear-gradient(135deg, #f1d4aa, #c89a62);
+      --radio-button-ink: #1b140f;
+      --radio-button-shadow: 0 10px 24px rgba(200,154,98,.28);
+      --radio-range: #c89a62;
+    }
+
+    html[data-theme="hitech"]{
+      --bg: #d8e2ee;
+      --bg-2: #c7d5e4;
+      --paper: rgba(245, 250, 255, 0.66);
+      --paper-strong: rgba(236, 245, 255, 0.82);
+      --ink: #12202f;
+      --muted: #516476;
+      --line: rgba(27, 73, 117, 0.14);
+      --accent: #2a7de1;
+      --accent-deep: #1654a8;
+      --accent-soft: rgba(42,125,225,0.10);
+      --success: #248a68;
+      --danger: #c14c6f;
+      --grid-line: rgba(255,255,255,0.16);
+      --surface-border: rgba(255,255,255,0.68);
+      --surface-highlight: linear-gradient(135deg, rgba(255,255,255,0.38), transparent 26%), linear-gradient(180deg, transparent, rgba(255,255,255,0.12));
+      --table-head: rgba(238, 246, 255, 0.72);
+      --input-bg: rgba(255,255,255,0.16);
+      --input-bg-hover: rgba(255,255,255,0.34);
+      --input-bg-focus: rgba(255,255,255,0.94);
+      --pill-bg: linear-gradient(180deg, #ffffff, #dcecff);
+      --checkbox-bg: rgba(255,255,255,0.9);
+      --hero-bg:
+        radial-gradient(circle at 14% 18%, rgba(77, 163, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 88% 12%, rgba(135, 196, 255, 0.26), transparent 20%),
+        radial-gradient(circle at 78% 88%, rgba(88, 183, 255, 0.16), transparent 22%),
+        linear-gradient(180deg, #eef5fb 0%, var(--bg) 48%, var(--bg-2) 100%);
+      --shadow: 0 26px 70px rgba(31, 74, 123, 0.12);
+      --shadow-soft: 0 12px 30px rgba(31, 74, 123, 0.09);
+      --mini-box-bg: rgba(255,255,255,0.42);
+      --mini-box-border: rgba(42,125,225,0.10);
+      --sheet-frame-bg: rgba(247,250,255,0.50);
+      --sheet-frame-border: rgba(42,125,225,0.10);
+      --badge-border: rgba(42,125,225,0.12);
+      --count-border: rgba(42,125,225,0.12);
+      --danger-soft: rgba(193,76,111,0.08);
+      --danger-border: rgba(193,76,111,0.16);
+      --selected-row: linear-gradient(180deg, rgba(42,125,225,0.10), rgba(42,125,225,0.05));
+      --selected-outline: rgba(42,125,225,0.20);
+      --move-soft: rgba(36,138,104,0.08);
+      --move-border: rgba(36,138,104,0.16);
+      --toast-bg: rgba(17, 40, 68, 0.94);
+      --widget-shell: rgba(255,255,255,0.40);
+      --widget-border: rgba(42,125,225,0.10);
+      --radio-bg: linear-gradient(180deg, rgba(255,255,255,.52), rgba(255,255,255,.26));
+      --radio-border: rgba(42,125,225,.12);
+      --radio-text: var(--ink);
+      --radio-subtle: var(--muted);
+      --radio-button-bg: linear-gradient(135deg, #7bc1ff, #2a7de1);
+      --radio-button-ink: #ffffff;
+      --radio-button-shadow: 0 10px 24px rgba(42,125,225,.24);
+      --radio-range: #2a7de1;
+    }
+
+    html[data-theme="hitech-dark"]{
+      --bg: #0b1220;
+      --bg-2: #111b2f;
+      --paper: rgba(17, 27, 47, 0.78);
+      --paper-strong: rgba(13, 23, 41, 0.92);
+      --ink: #e6eef8;
+      --muted: #8ea3bb;
+      --line: rgba(93, 145, 201, 0.18);
+      --accent: #57b7ff;
+      --accent-deep: #1d7fd8;
+      --accent-soft: rgba(87,183,255,0.12);
+      --success: #3bcf98;
+      --danger: #ff7b93;
+      --grid-line: rgba(255,255,255,0.05);
+      --surface-border: rgba(103, 149, 204, 0.12);
+      --surface-highlight: linear-gradient(135deg, rgba(255,255,255,0.06), transparent 26%), linear-gradient(180deg, transparent, rgba(255,255,255,0.03));
+      --table-head: rgba(18, 30, 52, 0.96);
+      --input-bg: rgba(255,255,255,0.04);
+      --input-bg-hover: rgba(255,255,255,0.08);
+      --input-bg-focus: rgba(16, 31, 54, 0.98);
+      --pill-bg: linear-gradient(180deg, #16253e, #0f1d33);
+      --checkbox-bg: rgba(255,255,255,0.03);
+      --hero-bg:
+        radial-gradient(circle at 12% 16%, rgba(87, 183, 255, 0.14), transparent 24%),
+        radial-gradient(circle at 88% 10%, rgba(58, 126, 214, 0.18), transparent 22%),
+        radial-gradient(circle at 80% 88%, rgba(72, 219, 251, 0.10), transparent 22%),
+        linear-gradient(180deg, #0f1728 0%, var(--bg) 46%, var(--bg-2) 100%);
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
+      --shadow-soft: 0 14px 34px rgba(0, 0, 0, 0.24);
+      --mini-box-bg: rgba(255,255,255,0.03);
+      --mini-box-border: rgba(87,183,255,0.12);
+      --sheet-frame-bg: rgba(14,23,40,0.74);
+      --sheet-frame-border: rgba(87,183,255,0.10);
+      --badge-border: rgba(87,183,255,0.12);
+      --count-border: rgba(87,183,255,0.12);
+      --danger-soft: rgba(255,123,147,0.08);
+      --danger-border: rgba(255,123,147,0.16);
+      --selected-row: linear-gradient(180deg, rgba(87,183,255,0.12), rgba(87,183,255,0.05));
+      --selected-outline: rgba(87,183,255,0.24);
+      --move-soft: rgba(59,207,152,0.08);
+      --move-border: rgba(59,207,152,0.16);
+      --toast-bg: rgba(10, 18, 33, 0.96);
+      --widget-shell: rgba(255,255,255,0.03);
+      --widget-border: rgba(87,183,255,0.10);
+      --radio-bg: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      --radio-border: rgba(87,183,255,.12);
+      --radio-text: var(--ink);
+      --radio-subtle: var(--muted);
+      --radio-button-bg: linear-gradient(135deg, #57b7ff, #1d7fd8);
+      --radio-button-ink: #07111d;
+      --radio-button-shadow: 0 10px 24px rgba(29,127,216,.26);
+      --radio-range: #57b7ff;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+
+    body{
+      margin: 0;
+      color: var(--ink);
+      background: var(--hero-bg);
+      font-family: "Manrope", sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    body::before{
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.34;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.45), transparent 80%);
+    }
+
+    .shell{
+      width: min(calc(100% - 28px), var(--max));
+      margin: 0 auto;
+      padding: 22px 0 36px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero{
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(360px, 0.94fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 22px;
+    }
+
+    .panel{
+      background: var(--paper);
+      border: 1px solid var(--surface-border);
+      backdrop-filter: blur(16px) saturate(1.1);
+      -webkit-backdrop-filter: blur(16px) saturate(1.1);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .panel::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: var(--surface-highlight);
+      mix-blend-mode: screen;
+    }
+
+    .hero-main{
+      padding: clamp(22px, 3.2vw, 34px);
+      min-height: 320px;
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 18px;
+    }
+
+    .hero-head{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 2px;
+    }
+
+    h1{
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2.2rem, 4.4vw, 3.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      font-weight: 700;
+      max-width: 8ch;
+    }
+
+    .hero-media-grid{
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .widget-card,
+    .radio-shell{
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .widget-card{
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 12%, transparent), transparent 28%),
+        var(--widget-shell);
+      border: 1px solid var(--widget-border);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      min-height: 205px;
+    }
+
+    .widget-wrap{
+      width: 100%;
+      flex: 1;
+      min-height: 150px;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .widget-wrap > div{
+      width: 100%;
+    }
+
+    .radio-shell{
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 10%, transparent), transparent 32%),
+        var(--widget-shell);
+      border: 1px solid var(--widget-border);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .radio-stack{
+      display: grid;
+      gap: 12px;
+    }
+
+    .sg-radio-player{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      padding:14px 16px;
+      border-radius:18px;
+      background: var(--radio-bg);
+      border:1px solid var(--radio-border);
+      color: var(--radio-text);
+      max-width:100%;
+      box-shadow:0 18px 50px rgba(0,0,0,.10);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-family:inherit;
+    }
+
+    .sg-radio-player__info{
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .sg-radio-player__title{
+      font-size:1rem;
+      font-weight:800;
+      line-height:1.2;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .sg-radio-player__btn{
+      width:52px;
+      height:52px;
+      border:0;
+      border-radius:50%;
+      cursor:pointer;
+      flex:0 0 auto;
+      display:grid;
+      place-items:center;
+      background: var(--radio-button-bg);
+      box-shadow: var(--radio-button-shadow);
+      padding: 0;
+    }
+
+    .sg-radio-player__btn:hover{
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .sg-radio-player__icon{
+      width:20px;
+      height:20px;
+      position:relative;
+      display:block;
+    }
+
+    .sg-radio-player__icon--play::before{
+      content:"";
+      position:absolute;
+      left:5px;
+      top:2px;
+      border-style:solid;
+      border-width:8px 0 8px 13px;
+      border-color:transparent transparent transparent var(--radio-button-ink);
+    }
+
+    .sg-radio-player__icon--pause{
+      display:none;
+    }
+
+    .sg-radio-player__icon--pause::before,
+    .sg-radio-player__icon--pause::after{
+      content:"";
+      position:absolute;
+      top:2px;
+      width:5px;
+      height:16px;
+      border-radius:2px;
+      background: var(--radio-button-ink);
+    }
+
+    .sg-radio-player__icon--pause::before{left:3px}
+    .sg-radio-player__icon--pause::after{right:3px}
+
+    .sg-radio-player.is-playing .sg-radio-player__icon--play{
+      display:none;
+    }
+
+    .sg-radio-player.is-playing .sg-radio-player__icon--pause{
+      display:block;
+    }
+
+    .sg-radio-player__volume{
+      display:grid;
+      gap:6px;
+      min-width:120px;
+      flex:0 0 auto;
+    }
+
+    .sg-radio-player__label{
+      font-size:.76rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color: var(--radio-subtle);
+    }
+
+    .sg-radio-player__range{
+      width:120px;
+      accent-color: var(--radio-range);
+    }
+
+    .hero-side{
+      padding: 16px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 14px;
+      min-height: 320px;
+    }
+
+    .mini-stat{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .mini-box{
+      background: var(--mini-box-bg);
+      border: 1px solid var(--mini-box-border);
+      border-radius: 18px;
+      padding: 15px;
+      box-shadow: var(--shadow-soft);
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .mini-label{
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 8px;
+    }
+
+    .mini-value{
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.7rem;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+    }
+
+    .action-card{
+      background:
+        radial-gradient(circle at top right, var(--accent-soft), transparent 35%),
+        var(--paper-strong);
+      border: 1px solid color-mix(in srgb, var(--surface-border) 80%, transparent);
+      border-radius: 22px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-soft);
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .action-title{
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .action-copy{
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+    }
+
+    .button-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    button{
+      appearance: none;
+      border: none;
+      font: inherit;
+      cursor: pointer;
+      border-radius: 16px;
+      padding: 13px 16px;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease,
+        color 0.18s ease,
+        opacity 0.18s ease,
+        border-color 0.18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button:active{ transform: translateY(0) scale(0.985); }
+
+    .btn-primary{
+      background: linear-gradient(180deg, var(--accent-deep), color-mix(in srgb, var(--accent-deep) 72%, #000 28%));
+      color: #fff;
+      box-shadow: 0 14px 30px color-mix(in srgb, var(--accent-deep) 24%, transparent);
+    }
+
+    .btn-primary:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px color-mix(in srgb, var(--accent-deep) 32%, transparent);
+    }
+
+    .btn-secondary{
+      background: rgba(255,255,255,0.65);
+      color: var(--ink);
+      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    html[data-theme="hitech-dark"] .btn-secondary{
+      background: rgba(255,255,255,0.04);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .btn-secondary:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.88);
+    }
+
+    html[data-theme="hitech-dark"] .btn-secondary:hover{
+      background: rgba(255,255,255,0.08);
+    }
+
+    .btn-danger{
+      background: var(--danger-soft);
+      color: var(--danger);
+      border: 1px solid var(--danger-border);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .btn-danger:hover{
+      background: color-mix(in srgb, var(--danger) 14%, transparent);
+      transform: translateY(-2px);
+    }
+
+    .btn-move{
+      background: var(--move-soft);
+      color: var(--success);
+      border: 1px solid var(--move-border);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .btn-move:hover{
+      background: color-mix(in srgb, var(--success) 14%, transparent);
+      transform: translateY(-2px);
+    }
+
+    .btn-danger:disabled,
+    .btn-move:disabled{
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .sheet{ padding: 14px; }
+
+    .sheet-frame{
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--sheet-frame-border);
+      background: var(--sheet-frame-bg);
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .sheet-head{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42));
+    }
+
+    html[data-theme="hitech-dark"] .sheet-head{
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    }
+
+    .sheet-title{
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.7rem;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+    }
+
+    .sheet-subtitle{
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-top: 6px;
+    }
+
+    .sheet-badge{
+      justify-self: end;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.65);
+      color: var(--muted);
+      border: 1px solid var(--badge-border);
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    html[data-theme="hitech-dark"] .sheet-badge{
+      background: rgba(255,255,255,0.04);
+    }
+
+    .table-wrap{ overflow: auto; }
+
+    table{
+      width: 100%;
+      min-width: 1250px;
+      border-collapse: collapse;
+    }
+
+    thead th{
+      text-align: left;
+      padding: 15px 16px;
+      font-size: 0.9rem;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      border-bottom: 1px solid var(--line);
+      background: var(--table-head);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    tbody tr{
+      transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    tbody tr:hover{
+      background: rgba(255,255,255,0.30);
+    }
+
+    html[data-theme="hitech-dark"] tbody tr:hover{
+      background: rgba(255,255,255,0.03);
+    }
+
+    tbody tr.is-selected{
+      background: var(--selected-row);
+      box-shadow: inset 0 0 0 1px var(--selected-outline);
+    }
+
+    tbody td{
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: middle;
+      transition: border-color var(--transition);
+    }
+
+    .select-col{ width: 82px; }
+    .order-col{ width: 90px; }
+    .move-col{ width: 132px; }
+    .goal-col{ width: 540px; }
+    .date-col{ width: 170px; }
+    .status-col{ width: 180px; }
+    .notes-col{ width: 280px; }
+    .remove-col{ width: 110px; }
+
+    .select-wrap{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .row-check{
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 7px;
+      border: 1.5px solid color-mix(in srgb, var(--accent) 30%, var(--ink) 20%);
+      background: var(--checkbox-bg);
+      cursor: pointer;
+      position: relative;
+      transition: background .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+    }
+
+    .row-check:hover{
+      transform: scale(1.05);
+      border-color: var(--accent);
+    }
+
+    .row-check:checked{
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+    }
+
+    .row-check:checked::after{
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 3px;
+      width: 5px;
+      height: 10px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .order-pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      height: 44px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: var(--pill-bg);
+      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+      font-weight: 700;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .cell-input,
+    .cell-select{
+      width: 100%;
+      border: 1px solid transparent;
+      background: var(--input-bg);
+      color: var(--ink);
+      font: inherit;
+      padding: 12px 13px;
+      border-radius: 12px;
+      outline: none;
+      transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease,
+        transform 0.18s ease,
+        color 0.18s ease;
+    }
+
+    .cell-input::placeholder{ color: color-mix(in srgb, var(--muted) 80%, white 20%); }
+
+    .cell-input:hover,
+    .cell-select:hover{ background: var(--input-bg-hover); }
+
+    .cell-input:focus,
+    .cell-select:focus{
+      border-color: color-mix(in srgb, var(--accent) 34%, transparent);
+      background: var(--input-bg-focus);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+      transform: translateY(-1px);
+    }
+
+    .remove-btn,
+    .move-btn{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
+      padding: 0;
+    }
+
+    .remove-btn{
+      background: var(--danger-soft);
+      color: var(--danger);
+      border: 1px solid var(--danger-border);
+    }
+
+    .remove-btn:hover{
+      background: color-mix(in srgb, var(--danger) 14%, transparent);
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .move-stack{
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .move-btn{
+      background: var(--move-soft);
+      color: var(--success);
+      border: 1px solid var(--move-border);
+    }
+
+    .move-btn:hover{
+      background: color-mix(in srgb, var(--success) 14%, transparent);
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .move-btn:disabled{
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .remove-btn svg,
+    .move-btn svg{
+      width: 18px;
+      height: 18px;
+    }
+
+    .sheet-foot{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .tip{
+      max-width: 70ch;
+      line-height: 1.7;
+    }
+
+    .count{
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.62);
+      border: 1px solid var(--count-border);
+      color: var(--ink);
+      font-size: 0.88rem;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    html[data-theme="hitech-dark"] .count{
+      background: rgba(255,255,255,0.04);
+    }
+
+    .toast{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--toast-bg);
+      color: #fff;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+      font-size: 0.92rem;
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity .22s ease, transform .22s ease, background .22s ease;
+      z-index: 100;
+      max-width: min(92vw, 360px);
+    }
+
+    .toast.show{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hidden-copy,
+    .hidden-file{
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .reveal{
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    .reveal.visible{
+      animation: fadeUp .8s cubic-bezier(.2,.8,.2,1) forwards;
+    }
+
+    @keyframes fadeUp{
+      from{ opacity: 0; transform: translateY(18px); }
+      to{ opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1080px){
+      .hero{
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .sheet-head{ grid-template-columns: 1fr; }
+      .sheet-badge{ justify-self: start; }
+    }
+
+    @media (max-width: 720px){
+      .sg-radio-player{
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .sg-radio-player__volume{
+        width: 100%;
+        min-width: 0;
+      }
+
+      .sg-radio-player__range{
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 640px){
+      .shell{
+        width: min(calc(100% - 18px), var(--max));
+        padding-top: 14px;
+      }
+
+      .hero-main,
+      .hero-side{
+        padding: 16px;
+      }
+
+      h1{
+        max-width: 10ch;
+        font-size: clamp(2rem, 9vw, 3rem);
+      }
+
+      .button-row button{ flex: 1 1 100%; }
+      .mini-stat{ grid-template-columns: 1fr; }
+    }
+
+    @page{
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print{
+      html, body{
+        width: 210mm;
+        min-height: 297mm;
+        background: #ffffff !important;
+        color: #000000 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      *{
+        color: #000000 !important;
+        text-shadow: none !important;
+      }
+
+      body::before,
+      .hero,
+      .sheet-foot,
+      .select-col,
+      .move-col,
+      .remove-col,
+      .remove-cell,
+      .select-cell,
+      .move-cell,
+      .toast{
+        display: none !important;
+      }
+
+      .shell{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .panel,
+      .sheet-frame{
+        box-shadow: none !important;
+        border: 1px solid #000000 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        background: #ffffff !important;
+      }
+
+      .panel::after{ display: none !important; }
+
+      .sheet{
+        padding: 0;
+        background: #ffffff !important;
+      }
+
+      .sheet-head{
+        padding: 6mm 7mm;
+        background: #ffffff !important;
+        border-bottom: 1px solid #000000 !important;
+      }
+
+      .sheet-title{
+        font-size: 20pt;
+        color: #000000 !important;
+      }
+
+      .sheet-subtitle,
+      .sheet-badge{
+        font-size: 9pt;
+        color: #000000 !important;
+      }
+
+      .sheet-badge{
+        background: #ffffff !important;
+        border: 1px solid #000000 !important;
+      }
+
+      .table-wrap{
+        overflow: visible;
+        background: #ffffff !important;
+      }
+
+      table{
+        min-width: 0;
+        width: 100%;
+        table-layout: fixed;
+        background: #ffffff !important;
+        border-collapse: collapse !important;
+      }
+
+      thead th{
+        position: static;
+        font-size: 8.5pt;
+        padding: 4mm 3mm;
+        background: #ffffff !important;
+        color: #000000 !important;
+        border-bottom: 1px solid #000000 !important;
+        border-top: 1px solid #000000 !important;
+      }
+
+      tbody tr,
+      tbody td{
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+
+      tbody td{
+        padding: 2.8mm 2.6mm;
+        border-bottom: 1px solid #000000 !important;
+      }
+
+      .order-col{ width: 14mm; }
+      .goal-col{ width: 79mm; }
+      .date-col{ width: 27mm; }
+      .status-col{ width: 31mm; }
+      .notes-col{ width: auto; }
+
+      .order-pill{
+        min-width: 10mm;
+        height: 10mm;
+        font-size: 9pt;
+        background: #ffffff !important;
+        border: 1px solid #000000 !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+      }
+
+      .cell-input,
+      .cell-select{
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0;
+        border-radius: 0;
+        font-size: 9pt;
+        line-height: 1.35;
+        appearance: none;
+        -webkit-appearance: none;
+        color: #000000 !important;
+      }
+
+      .cell-input::placeholder{
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="panel hero-main reveal">
+        <div class="hero-head">
+          <h1>Objetivos</h1>
+        </div>
+
+        <div class="hero-media-grid">
+          <section class="widget-card" aria-label="Previsão do tempo">
+            <div class="widget-wrap">
+              <div id="ww_a8f8b462aca40"
+                   v="1.3"
+                   loc="id"
+                   a='{"t":"responsive","lang":"pt","sl_lpl":1,"ids":["wl5063"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"5"}'>
+                Mais previsões:
+                <a href="https://tempolongo.com/rio_de_janeiro_tempo_25_dias/" id="ww_a8f8b462aca40_u" target="_blank" rel="noopener noreferrer">
+                  Weather Rio de Janeiro 30 days
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section class="radio-shell" aria-label="Rádio online">
+            <div class="radio-stack">
+              <div class="sg-radio-player" data-stream="https://pianosolo.streamguys1.com/live">
+                <div class="sg-radio-player__info">
+                  <div class="sg-radio-player__title">Piano Solo Radio</div>
+                </div>
+
+                <button class="sg-radio-player__btn" type="button" aria-label="Tocar rádio">
+                  <span class="sg-radio-player__icon sg-radio-player__icon--play" aria-hidden="true"></span>
+                  <span class="sg-radio-player__icon sg-radio-player__icon--pause" aria-hidden="true"></span>
+                </button>
+
+                <div class="sg-radio-player__volume">
+                  <label class="sg-radio-player__label" for="sg-volume-1">Volume</label>
+                  <input class="sg-radio-player__range" id="sg-volume-1" type="range" min="0" max="1" step="0.01" value="0.8">
+                </div>
+
+                <audio class="sg-radio-player__audio" preload="none">
+                  <source src="https://pianosolo.streamguys1.com/live" type="audio/mpeg">
+                </audio>
+              </div>
+            </div>
+          </section>
+        </div>
+      </article>
+
+      <aside class="panel hero-side reveal" aria-label="Painel de ações">
+        <div class="mini-stat">
+          <div class="mini-box">
+            <div class="mini-label">Linhas atuais</div>
+            <div class="mini-value" id="lineCountTop">5</div>
+          </div>
+          <div class="mini-box">
+            <div class="mini-label">Selecionadas</div>
+            <div class="mini-value" style="font-size:1.45rem;" id="selectedCountTop">0</div>
+          </div>
+          <div class="mini-box">
+            <div class="mini-label">Tema ativo</div>
+            <div class="mini-value" style="font-size:1.35rem;" id="themeNameTop">Clássico</div>
+          </div>
+        </div>
+
+        <div class="action-card">
+          <div>
+            <div class="action-title">Ações rápidas</div>
+            <div class="action-copy">
+              Selecione uma única linha para mover com as setas ↑ e ↓, ou várias linhas para excluir em lote. Os dados continuam salvos automaticamente.
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="btn-primary" id="pdfBtn" type="button">Gerar PDF A4</button>
+            <button class="btn-secondary" id="themeToggleBtn" type="button">Tema: Clássico</button>
+            <button class="btn-secondary" id="copyExcelBtn" type="button">Copiar para Excel</button>
+            <button class="btn-secondary" id="exportBtn" type="button">Exportar JSON</button>
+            <button class="btn-secondary" id="exportCsvBtn" type="button">Exportar CSV</button>
+            <button class="btn-secondary" id="importBtn" type="button">Importar dados</button>
+            <button class="btn-secondary" id="addRowBtn" type="button">Adicionar linha</button>
+            <button class="btn-move" id="moveUpBtn" type="button" disabled>Mover ↑</button>
+            <button class="btn-move" id="moveDownBtn" type="button" disabled>Mover ↓</button>
+            <button class="btn-danger" id="deleteSelectedBtn" type="button" disabled>Excluir selecionadas</button>
+            <button class="btn-danger" id="clearBtn" type="button">Limpar tudo</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="panel sheet reveal" aria-labelledby="planilha-titulo">
+      <div class="sheet-frame">
+        <div class="sheet-head">
+          <div>
+            <div class="sheet-title" id="planilha-titulo">Planilha de execução doméstica</div>
+            <div class="sheet-subtitle">Selecione uma linha para mover de posição ou várias linhas para exclusão e reorganização automática.</div>
+          </div>
+          <div class="sheet-badge" id="lastSavedLabel">Ainda não salvo</div>
+        </div>
+
+        <div class="table-wrap">
+          <table id="taskTable">
+            <thead>
+              <tr>
+                <th class="select-col">Seleção</th>
+                <th class="order-col">Ordem</th>
+                <th class="move-col">Mover</th>
+                <th class="goal-col">Objetivo</th>
+                <th class="date-col">Prazo</th>
+                <th class="status-col">Status</th>
+                <th class="notes-col">Observações</th>
+                <th class="remove-col">Excluir</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="sheet-foot">
+          <div class="tip">
+            Marque <strong>uma única linha</strong> para usar as setas de movimentação. Se marcar <strong>várias linhas</strong>, poderá excluí-las em lote. A coluna <strong>Ordem</strong> será sempre reorganizada automaticamente.
+          </div>
+          <div class="count" id="lineCountBottom">0 linhas</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <textarea id="clipboardData" class="hidden-copy" aria-hidden="true"></textarea>
+  <input id="importFileInput" class="hidden-file" type="file" accept=".json,application/json" />
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const STORAGE_KEY = 'sequencia_realizacao_domestica_v12';
+    const THEME_KEY = 'objetivos_theme_preference_v2';
+    const THEMES = ['classic', 'hitech', 'hitech-dark'];
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = `${index * 0.08}s`;
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(el => observer.observe(el));
+
+    const htmlEl = document.documentElement;
+    const tableBody = document.getElementById('tableBody');
+    const addRowBtn = document.getElementById('addRowBtn');
+    const deleteSelectedBtn = document.getElementById('deleteSelectedBtn');
+    const moveUpBtn = document.getElementById('moveUpBtn');
+    const moveDownBtn = document.getElementById('moveDownBtn');
+    const copyExcelBtn = document.getElementById('copyExcelBtn');
+    const exportBtn = document.getElementById('exportBtn');
+    const exportCsvBtn = document.getElementById('exportCsvBtn');
+    const importBtn = document.getElementById('importBtn');
+    const importFileInput = document.getElementById('importFileInput');
+    const clearBtn = document.getElementById('clearBtn');
+    const pdfBtn = document.getElementById('pdfBtn');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const clipboardData = document.getElementById('clipboardData');
+    const lineCountTop = document.getElementById('lineCountTop');
+    const lineCountBottom = document.getElementById('lineCountBottom');
+    const selectedCountTop = document.getElementById('selectedCountTop');
+    const themeNameTop = document.getElementById('themeNameTop');
+    const toast = document.getElementById('toast');
+    const lastSavedLabel = document.getElementById('lastSavedLabel');
+
+    let saveTimer = null;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(showToast._timer);
+      showToast._timer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2400);
+    }
+
+    function formatNow(date = new Date()) {
+      return date.toLocaleString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    function updateSaveLabel(text) {
+      lastSavedLabel.textContent = text;
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll('&', '&amp;')
+        .replaceAll('"', '&quot;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;');
+    }
+
+    function getCurrentTheme() {
+      return htmlEl.getAttribute('data-theme') || 'classic';
+    }
+
+    function getThemeDisplayName(theme) {
+      if (theme === 'hitech') return 'Hi-Tech';
+      if (theme === 'hitech-dark') return 'Hi-Tech Dark';
+      return 'Clássico';
+    }
+
+    function updateThemeButtonLabel() {
+      const current = getCurrentTheme();
+      themeToggleBtn.textContent = `Tema: ${getThemeDisplayName(current)}`;
+      themeNameTop.textContent = getThemeDisplayName(current);
+    }
+
+    function applyTheme(theme, persist = true) {
+      const finalTheme = THEMES.includes(theme) ? theme : 'classic';
+      htmlEl.setAttribute('data-theme', finalTheme);
+      updateThemeButtonLabel();
+      if (persist) localStorage.setItem(THEME_KEY, finalTheme);
+    }
+
+    function toggleTheme() {
+      const current = getCurrentTheme();
+      const currentIndex = THEMES.indexOf(current);
+      const nextTheme = THEMES[(currentIndex + 1) % THEMES.length];
+      applyTheme(nextTheme, true);
+      showToast(`Tema alterado para: ${getThemeDisplayName(nextTheme)}.`);
+    }
+
+    function createRemoveButton() {
+      return `
+        <button class="remove-btn" type="button" aria-label="Excluir linha" title="Excluir linha">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 4.5h6m-9 3h12m-1 0-.55 9.07c-.08 1.33-.12 1.99-.41 2.49-.26.44-.65.79-1.11 1.01-.52.24-1.18.24-2.5.24h-.86c-1.32 0-1.98 0-2.5-.24a2.5 2.5 0 0 1-1.11-1.01c-.29-.5-.33-1.16-.41-2.49L6 7.5m3 3.5v5m6-5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      `;
+    }
+
+    function createMoveButtons() {
+      return `
+        <div class="move-stack">
+          <button class="move-btn move-up-btn" type="button" aria-label="Mover linha para cima" title="Mover para cima">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 19V5m0 0-5 5m5-5 5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="move-btn move-down-btn" type="button" aria-label="Mover linha para baixo" title="Mover para baixo">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 5v14m0 0-5-5m5 5 5-5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      `;
+    }
+
+    function createRow(data = {}) {
+      const order = tableBody.querySelectorAll('tr').length + 1;
+      const tr = document.createElement('tr');
+      const status = data.status || 'Pendente';
+
+      tr.innerHTML = `
+        <td class="select-col select-cell">
+          <div class="select-wrap">
+            <input class="row-check" type="checkbox" aria-label="Selecionar linha para ações">
+          </div>
+        </td>
+        <td class="order-col"><span class="order-pill">${order}</span></td>
+        <td class="move-col move-cell">${createMoveButtons()}</td>
+        <td><input class="cell-input" type="text" placeholder="Objetivo" value="${escapeHtml(data.objetivo || '')}" /></td>
+        <td><input class="cell-input" type="text" placeholder="Prazo" value="${escapeHtml(data.prazo || '')}" /></td>
+        <td>
+          <select class="cell-select">
+            <option ${status === 'Pendente' ? 'selected' : ''}>Pendente</option>
+            <option ${status === 'Em andamento' ? 'selected' : ''}>Em andamento</option>
+            <option ${status === 'Concluído' ? 'selected' : ''}>Concluído</option>
+          </select>
+        </td>
+        <td><input class="cell-input" type="text" placeholder="Observações" value="${escapeHtml(data.observacoes || '')}" /></td>
+        <td class="remove-cell">${createRemoveButton()}</td>
+      `;
+      return tr;
+    }
+
+    function getRowsData() {
+      const rows = [];
+      tableBody.querySelectorAll('tr').forEach((row, index) => {
+        const inputs = row.querySelectorAll('input.cell-input');
+        const select = row.querySelector('select');
+        rows.push({
+          ordem: index + 1,
+          objetivo: inputs[0]?.value.trim() || '',
+          prazo: inputs[1]?.value.trim() || '',
+          status: select?.value.trim() || 'Pendente',
+          observacoes: inputs[2]?.value.trim() || ''
+        });
+      });
+      return rows;
+    }
+
+    function setRowsData(rows) {
+      tableBody.innerHTML = '';
+      if (Array.isArray(rows) && rows.length) {
+        rows.forEach(item => tableBody.appendChild(createRow(item)));
+      } else {
+        createDefaultRows();
+      }
+      updateOrderNumbers();
+      updateSelectionState();
+      updateMoveButtons();
+    }
+
+    function savePayload(payload) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      updateSaveLabel(`Salvo em ${formatNow()}`);
+    }
+
+    function saveData(immediate = false) {
+      const persist = () => {
+        const payload = {
+          version: 12,
+          updatedAt: new Date().toISOString(),
+          rows: getRowsData()
+        };
+        savePayload(payload);
+      };
+
+      if (immediate) {
+        persist();
+        return;
+      }
+
+      clearTimeout(saveTimer);
+      updateSaveLabel('Salvando...');
+      saveTimer = setTimeout(persist, 250);
+    }
+
+    function createDefaultRows() {
+      tableBody.innerHTML = '';
+      const defaults = Array.from({ length: 5 }, () => ({
+        objetivo: '',
+        prazo: '',
+        status: 'Pendente',
+        observacoes: ''
+      }));
+      defaults.forEach(item => tableBody.appendChild(createRow(item)));
+      updateOrderNumbers();
+      updateSelectionState();
+      updateMoveButtons();
+    }
+
+    function loadData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          createDefaultRows();
+          updateSaveLabel('Pronto para salvar');
+          return;
+        }
+
+        const data = JSON.parse(raw);
+        if (Array.isArray(data.rows) && data.rows.length) {
+          setRowsData(data.rows);
+        } else {
+          createDefaultRows();
+        }
+
+        if (data.updatedAt) {
+          updateSaveLabel(`Restaurado de ${formatNow(new Date(data.updatedAt))}`);
+        } else {
+          updateSaveLabel('Dados restaurados');
+        }
+      } catch (error) {
+        createDefaultRows();
+        updateSaveLabel('Erro ao restaurar');
+      }
+    }
+
+    function loadTheme() {
+      const savedTheme = localStorage.getItem(THEME_KEY) || 'classic';
+      applyTheme(savedTheme, false);
+    }
+
+    function updateOrderNumbers() {
+      const rows = [...tableBody.querySelectorAll('tr')];
+      rows.forEach((row, index) => {
+        const pill = row.querySelector('.order-pill');
+        if (pill) pill.textContent = index + 1;
+      });
+      updateLineCount();
+    }
+
+    function updateLineCount() {
+      const count = tableBody.querySelectorAll('tr').length;
+      lineCountTop.textContent = count;
+      lineCountBottom.textContent = `${count} ${count === 1 ? 'linha' : 'linhas'}`;
+    }
+
+    function getSelectedRows() {
+      return [...tableBody.querySelectorAll('.row-check:checked')]
+        .map(check => check.closest('tr'))
+        .filter(Boolean);
+    }
+
+    function getSingleSelectedRow() {
+      const rows = getSelectedRows();
+      return rows.length === 1 ? rows[0] : null;
+    }
+
+    function updateSelectionState() {
+      const checks = [...tableBody.querySelectorAll('.row-check')];
+      const checked = checks.filter(check => check.checked);
+
+      checked.forEach(check => check.closest('tr')?.classList.add('is-selected'));
+      checks.filter(check => !check.checked).forEach(check => check.closest('tr')?.classList.remove('is-selected'));
+
+      selectedCountTop.textContent = checked.length;
+      deleteSelectedBtn.disabled = checked.length === 0;
+
+      const singleSelected = checked.length === 1;
+      moveUpBtn.disabled = !singleSelected;
+      moveDownBtn.disabled = !singleSelected;
+    }
+
+    function updateMoveButtons() {
+      const rows = [...tableBody.querySelectorAll('tr')];
+      rows.forEach((row, index) => {
+        const upBtn = row.querySelector('.move-up-btn');
+        const downBtn = row.querySelector('.move-down-btn');
+        if (upBtn) upBtn.disabled = index === 0;
+        if (downBtn) downBtn.disabled = index === rows.length - 1;
+      });
+    }
+
+    function animateRowOut(row, delay = 0) {
+      row.animate(
+        [
+          { opacity: 1, transform: 'translateX(0)' },
+          { opacity: 0, transform: 'translateX(10px)' }
+        ],
+        {
+          duration: 220,
+          easing: 'ease-in',
+          delay,
+          fill: 'forwards'
+        }
+      );
+    }
+
+    function animateMove(row, direction = 'up') {
+      row.animate(
+        [
+          { transform: 'translateY(0)', boxShadow: 'none' },
+          { transform: `translateY(${direction === 'up' ? '-8px' : '8px'})`, boxShadow: '0 10px 20px rgba(0,0,0,0.08)' },
+          { transform: 'translateY(0)', boxShadow: 'none' }
+        ],
+        {
+          duration: 260,
+          easing: 'ease'
+        }
+      );
+    }
+
+    function removeRows(rows) {
+      const totalRows = tableBody.querySelectorAll('tr').length;
+      if (rows.length >= totalRows) {
+        showToast('Não é possível excluir todas as linhas.');
+        return;
+      }
+
+      rows.forEach((row, index) => animateRowOut(row, index * 40));
+
+      setTimeout(() => {
+        rows.forEach(row => row.remove());
+        updateOrderNumbers();
+        updateSelectionState();
+        updateMoveButtons();
+        saveData(true);
+        showToast(`${rows.length} ${rows.length === 1 ? 'linha excluída' : 'linhas excluídas'}.`);
+      }, 260 + (rows.length - 1) * 40);
+    }
+
+    function moveRowUp(row) {
+      if (!row) return;
+      const prev = row.previousElementSibling;
+      if (!prev) {
+        showToast('A linha já está no topo.');
+        return;
+      }
+      tableBody.insertBefore(row, prev);
+      animateMove(row, 'up');
+      updateOrderNumbers();
+      updateSelectionState();
+      updateMoveButtons();
+      saveData(true);
+      showToast('Linha movida para cima.');
+    }
+
+    function moveRowDown(row) {
+      if (!row) return;
+      const next = row.nextElementSibling;
+      if (!next) {
+        showToast('A linha já está na última posição.');
+        return;
+      }
+      tableBody.insertBefore(next, row);
+      animateMove(row, 'down');
+      updateOrderNumbers();
+      updateSelectionState();
+      updateMoveButtons();
+      saveData(true);
+      showToast('Linha movida para baixo.');
+    }
+
+    function clearAllData() {
+      const confirmed = confirm('Deseja realmente limpar todos os dados da tabela?');
+      if (!confirmed) return;
+
+      localStorage.removeItem(STORAGE_KEY);
+      createDefaultRows();
+      saveData(true);
+      showToast('Todos os dados foram limpos.');
+    }
+
+    addRowBtn.addEventListener('click', () => {
+      const row = createRow();
+      tableBody.appendChild(row);
+      row.animate(
+        [
+          { opacity: 0, transform: 'translateY(12px)' },
+          { opacity: 1, transform: 'translateY(0)' }
+        ],
+        { duration: 300, easing: 'ease-out' }
+      );
+      updateOrderNumbers();
+      updateSelectionState();
+      updateMoveButtons();
+      saveData();
+      showToast('Nova linha adicionada.');
+    });
+
+    moveUpBtn.addEventListener('click', () => {
+      const row = getSingleSelectedRow();
+      if (!row) {
+        showToast('Selecione apenas uma linha para mover.');
+        return;
+      }
+      moveRowUp(row);
+    });
+
+    moveDownBtn.addEventListener('click', () => {
+      const row = getSingleSelectedRow();
+      if (!row) {
+        showToast('Selecione apenas uma linha para mover.');
+        return;
+      }
+      moveRowDown(row);
+    });
+
+    deleteSelectedBtn.addEventListener('click', () => {
+      const selectedRows = getSelectedRows();
+
+      if (!selectedRows.length) {
+        showToast('Nenhuma linha selecionada.');
+        return;
+      }
+
+      const confirmed = confirm(`Deseja excluir ${selectedRows.length} ${selectedRows.length === 1 ? 'linha selecionada' : 'linhas selecionadas'}?`);
+      if (!confirmed) return;
+
+      removeRows(selectedRows);
+    });
+
+    tableBody.addEventListener('click', (event) => {
+      const removeBtn = event.target.closest('.remove-btn');
+      if (removeBtn) {
+        const row = removeBtn.closest('tr');
+        if (!row) return;
+
+        const totalRows = tableBody.querySelectorAll('tr').length;
+        if (totalRows === 1) {
+          showToast('Não é possível excluir a última linha.');
+          return;
+        }
+
+        removeRows([row]);
+        return;
+      }
+
+      const moveUpRowBtn = event.target.closest('.move-up-btn');
+      if (moveUpRowBtn) {
+        const row = moveUpRowBtn.closest('tr');
+        moveRowUp(row);
+        return;
+      }
+
+      const moveDownRowBtn = event.target.closest('.move-down-btn');
+      if (moveDownRowBtn) {
+        const row = moveDownRowBtn.closest('tr');
+        moveRowDown(row);
+      }
+    });
+
+    tableBody.addEventListener('change', (event) => {
+      if (event.target.classList.contains('row-check')) {
+        updateSelectionState();
+        return;
+      }
+      saveData();
+    });
+
+    tableBody.addEventListener('input', (event) => {
+      if (event.target.classList.contains('row-check')) return;
+      saveData();
+    });
+
+    function getTableTSV() {
+      const headers = ['Ordem', 'Objetivo', 'Prazo', 'Status', 'Observações'];
+      const lines = [headers.join('\t')];
+
+      getRowsData().forEach((item) => {
+        lines.push([
+          item.ordem,
+          item.objetivo,
+          item.prazo,
+          item.status,
+          item.observacoes
+        ].join('\t'));
+      });
+
+      return lines.join('\n');
+    }
+
+    function toCsvValue(value) {
+      const safe = String(value ?? '').replaceAll('"', '""');
+      return `"${safe}"`;
+    }
+
+    function getTableCSV() {
+      const headers = ['Ordem', 'Objetivo', 'Prazo', 'Status', 'Observações'];
+      const lines = [headers.map(toCsvValue).join(',')];
+
+      getRowsData().forEach((item) => {
+        lines.push([
+          item.ordem,
+          item.objetivo,
+          item.prazo,
+          item.status,
+          item.observacoes
+        ].map(toCsvValue).join(','));
+      });
+
+      return '\uFEFF' + lines.join('\n');
+    }
+
+    async function copyToClipboard(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (e) {
+        clipboardData.value = text;
+        clipboardData.focus();
+        clipboardData.select();
+        try {
+          document.execCommand('copy');
+          return true;
+        } catch (err) {
+          return false;
+        }
+      }
+    }
+
+    copyExcelBtn.addEventListener('click', async () => {
+      const tsv = getTableTSV();
+      const ok = await copyToClipboard(tsv);
+      const original = copyExcelBtn.textContent;
+
+      copyExcelBtn.textContent = ok ? 'Copiado!' : 'Falha ao copiar';
+      if (ok) {
+        copyExcelBtn.style.background = 'linear-gradient(180deg, var(--success), color-mix(in srgb, var(--success) 75%, #000 25%))';
+        showToast('Tabela copiada para o Excel.');
+      } else {
+        showToast('Não foi possível copiar automaticamente.');
+      }
+
+      setTimeout(() => {
+        copyExcelBtn.textContent = original;
+        copyExcelBtn.style.background = '';
+      }, 1500);
+    });
+
+    exportBtn.addEventListener('click', () => {
+      const payload = {
+        version: 12,
+        exportedAt: new Date().toISOString(),
+        theme: getCurrentTheme(),
+        rows: getRowsData()
+      };
+
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'objetivos-dados.json';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      showToast('Dados exportados em JSON com sucesso.');
+    });
+
+    exportCsvBtn.addEventListener('click', () => {
+      const csv = getTableCSV();
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'objetivos-dados.csv';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      showToast('Dados exportados em CSV com sucesso.');
+    });
+
+    importBtn.addEventListener('click', () => {
+      importFileInput.value = '';
+      importFileInput.click();
+    });
+
+    importFileInput.addEventListener('change', (event) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        try {
+          const parsed = JSON.parse(reader.result);
+
+          if (!parsed || !Array.isArray(parsed.rows)) {
+            showToast('Arquivo inválido para importação.');
+            return;
+          }
+
+          const confirmed = confirm('Deseja importar os dados do arquivo? Os dados atuais serão substituídos.');
+          if (!confirmed) return;
+
+          const normalizedRows = parsed.rows.map((item) => ({
+            objetivo: item.objetivo || '',
+            prazo: item.prazo || '',
+            status: ['Pendente', 'Em andamento', 'Concluído'].includes(item.status) ? item.status : 'Pendente',
+            observacoes: item.observacoes || ''
+          }));
+
+          setRowsData(normalizedRows);
+
+          if (parsed.theme) {
+            applyTheme(parsed.theme, true);
+          }
+
+          const payload = {
+            version: 12,
+            updatedAt: new Date().toISOString(),
+            rows: getRowsData()
+          };
+
+          savePayload(payload);
+          updateSaveLabel(`Importado em ${formatNow()}`);
+          showToast('Dados importados com sucesso.');
+        } catch (error) {
+          showToast('Erro ao ler o arquivo JSON.');
+        }
+      };
+
+      reader.readAsText(file, 'UTF-8');
+    });
+
+    clearBtn.addEventListener('click', clearAllData);
+    pdfBtn.addEventListener('click', generatePDF);
+    themeToggleBtn.addEventListener('click', toggleTheme);
+
+    function syncInputsForPrint() {
+      document.querySelectorAll('input.cell-input').forEach((input) => {
+        input.setAttribute('value', input.value);
+      });
+
+      document.querySelectorAll('select').forEach((select) => {
+        Array.from(select.options).forEach((option) => {
+          option.removeAttribute('selected');
+          if (option.value === select.value || option.textContent === select.value) {
+            option.setAttribute('selected', 'selected');
+          }
+        });
+      });
+    }
+
+    function generatePDF() {
+      syncInputsForPrint();
+      saveData(true);
+      showToast('Abrindo impressão do relatório. Escolha "Salvar como PDF".');
+      setTimeout(() => window.print(), 250);
+    }
+
+    function initRadioPlayer() {
+      const player = document.querySelector('.sg-radio-player');
+      if (!player) return;
+
+      const audio = player.querySelector('.sg-radio-player__audio');
+      const btn = player.querySelector('.sg-radio-player__btn');
+      const volume = player.querySelector('.sg-radio-player__range');
+
+      if (!audio || !btn || !volume) return;
+
+      audio.volume = parseFloat(volume.value);
+
+      function setPlayingState(isPlaying) {
+        player.classList.toggle('is-playing', isPlaying);
+        btn.setAttribute('aria-label', isPlaying ? 'Pausar rádio' : 'Tocar rádio');
+      }
+
+      btn.addEventListener('click', async () => {
+        if (audio.paused) {
+          try {
+            await audio.play();
+          } catch (err) {
+            console.error('Erro ao iniciar o stream:', err);
+            showToast('Não foi possível iniciar a rádio.');
+          }
+        } else {
+          audio.pause();
+        }
+      });
+
+      volume.addEventListener('input', () => {
+        audio.volume = parseFloat(volume.value);
+      });
+
+      audio.addEventListener('play', () => setPlayingState(true));
+      audio.addEventListener('playing', () => setPlayingState(true));
+      audio.addEventListener('pause', () => setPlayingState(false));
+      audio.addEventListener('ended', () => setPlayingState(false));
+      audio.addEventListener('error', () => {
+        setPlayingState(false);
+        showToast('Erro ao carregar o stream da rádio.');
+      });
+    }
+
+    window.addEventListener('beforeunload', () => {
+      saveData(true);
+    });
+
+    loadTheme();
+    loadData();
+    updateOrderNumbers();
+    updateSelectionState();
+    updateMoveButtons();
+    updateThemeButtonLabel();
+    initRadioPlayer();
+  </script>
+
+  <script async src="https://app3.weatherwidget.org/js/?id=ww_a8f8b462aca40"></script>
+</body>
+</html>
