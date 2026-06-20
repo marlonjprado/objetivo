@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Versão: v13 -->
 <html lang="pt-BR" data-theme="classic">
 <head>
   <meta charset="UTF-8" />
@@ -1180,11 +1181,13 @@
           <div>
             <div class="action-title">Ações rápidas</div>
             <div class="action-copy">
-              Selecione uma única linha para mover com as setas ↑ e ↓, ou várias linhas para excluir em lote. Os dados continuam salvos automaticamente.
+              Agora você pode salvar e carregar os dados online via Google Sheets, além das ações locais da tabela.
             </div>
           </div>
 
           <div class="button-row">
+            <button class="btn-primary" id="saveRemoteBtn" type="button">Salvar online</button>
+            <button class="btn-secondary" id="loadRemoteBtn" type="button">Carregar online</button>
             <button class="btn-primary" id="pdfBtn" type="button">Gerar PDF A4</button>
             <button class="btn-secondary" id="themeToggleBtn" type="button">Tema: Clássico</button>
             <button class="btn-secondary" id="copyExcelBtn" type="button">Copiar para Excel</button>
@@ -1206,7 +1209,7 @@
         <div class="sheet-head">
           <div>
             <div class="sheet-title" id="planilha-titulo">Planilha de execução doméstica</div>
-            <div class="sheet-subtitle">Selecione uma linha para mover de posição ou várias linhas para exclusão e reorganização automática.</div>
+            <div class="sheet-subtitle">Agora com salvamento e carregamento via Google Sheets. Você também pode continuar exportando e importando localmente.</div>
           </div>
           <div class="sheet-badge" id="lastSavedLabel">Ainda não salvo</div>
         </div>
@@ -1231,7 +1234,7 @@
 
         <div class="sheet-foot">
           <div class="tip">
-            Marque <strong>uma única linha</strong> para usar as setas de movimentação. Se marcar <strong>várias linhas</strong>, poderá excluí-las em lote. A coluna <strong>Ordem</strong> será sempre reorganizada automaticamente.
+            Marque <strong>uma única linha</strong> para mover de posição. Use <strong>Salvar online</strong> para enviar os dados ao Google Sheets e <strong>Carregar online</strong> para restaurar o conteúdo salvo.
           </div>
           <div class="count" id="lineCountBottom">0 linhas</div>
         </div>
@@ -1244,9 +1247,15 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    const STORAGE_KEY = 'sequencia_realizacao_domestica_v12';
+    const STORAGE_KEY = 'sequencia_realizacao_domestica_v13';
     const THEME_KEY = 'objetivos_theme_preference_v2';
     const THEMES = ['classic', 'hitech', 'hitech-dark'];
+
+    /*
+      REFERÊNCIA DA INTEGRAÇÃO GOOGLE SHEETS
+      Edite esta URL no futuro, se trocar o Web App do Apps Script:
+    */
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwz1x05xFy5V-kT3Tlo0-X5Euw-9iFmNsFrQfTlR40XHPv0OY0DuZVdxPYtAPTH-y1QXg/exec';
 
     const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -1275,6 +1284,8 @@
     const clearBtn = document.getElementById('clearBtn');
     const pdfBtn = document.getElementById('pdfBtn');
     const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const saveRemoteBtn = document.getElementById('saveRemoteBtn');
+    const loadRemoteBtn = document.getElementById('loadRemoteBtn');
     const clipboardData = document.getElementById('clipboardData');
     const lineCountTop = document.getElementById('lineCountTop');
     const lineCountBottom = document.getElementById('lineCountBottom');
@@ -1284,6 +1295,7 @@
     const lastSavedLabel = document.getElementById('lastSavedLabel');
 
     let saveTimer = null;
+    let autoSaveRemoteTimer = null;
 
     function showToast(message) {
       toast.textContent = message;
@@ -1291,7 +1303,7 @@
       clearTimeout(showToast._timer);
       showToast._timer = setTimeout(() => {
         toast.classList.remove('show');
-      }, 2400);
+      }, 2600);
     }
 
     function formatNow(date = new Date()) {
@@ -1432,13 +1444,13 @@
 
     function savePayload(payload) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-      updateSaveLabel(`Salvo em ${formatNow()}`);
+      updateSaveLabel(`Salvo localmente em ${formatNow()}`);
     }
 
-    function saveData(immediate = false) {
+    function saveLocalData(immediate = false) {
       const persist = () => {
         const payload = {
-          version: 12,
+          version: 13,
           updatedAt: new Date().toISOString(),
           rows: getRowsData()
         };
@@ -1451,7 +1463,7 @@
       }
 
       clearTimeout(saveTimer);
-      updateSaveLabel('Salvando...');
+      updateSaveLabel('Salvando localmente...');
       saveTimer = setTimeout(persist, 250);
     }
 
@@ -1469,7 +1481,7 @@
       updateMoveButtons();
     }
 
-    function loadData() {
+    function loadLocalData() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) {
@@ -1486,9 +1498,9 @@
         }
 
         if (data.updatedAt) {
-          updateSaveLabel(`Restaurado de ${formatNow(new Date(data.updatedAt))}`);
+          updateSaveLabel(`Restaurado localmente de ${formatNow(new Date(data.updatedAt))}`);
         } else {
-          updateSaveLabel('Dados restaurados');
+          updateSaveLabel('Dados locais restaurados');
         }
       } catch (error) {
         createDefaultRows();
@@ -1595,7 +1607,8 @@
         updateOrderNumbers();
         updateSelectionState();
         updateMoveButtons();
-        saveData(true);
+        saveLocalData(true);
+        scheduleRemoteAutoSave();
         showToast(`${rows.length} ${rows.length === 1 ? 'linha excluída' : 'linhas excluídas'}.`);
       }, 260 + (rows.length - 1) * 40);
     }
@@ -1612,7 +1625,8 @@
       updateOrderNumbers();
       updateSelectionState();
       updateMoveButtons();
-      saveData(true);
+      saveLocalData(true);
+      scheduleRemoteAutoSave();
       showToast('Linha movida para cima.');
     }
 
@@ -1628,7 +1642,8 @@
       updateOrderNumbers();
       updateSelectionState();
       updateMoveButtons();
-      saveData(true);
+      saveLocalData(true);
+      scheduleRemoteAutoSave();
       showToast('Linha movida para baixo.');
     }
 
@@ -1638,8 +1653,109 @@
 
       localStorage.removeItem(STORAGE_KEY);
       createDefaultRows();
-      saveData(true);
-      showToast('Todos os dados foram limpos.');
+      saveLocalData(true);
+      showToast('Todos os dados foram limpos localmente.');
+    }
+
+    function normalizeRows(rows) {
+      if (!Array.isArray(rows)) return [];
+      return rows.map((item, index) => ({
+        ordem: index + 1,
+        objetivo: item.objetivo || '',
+        prazo: item.prazo || '',
+        status: ['Pendente', 'Em andamento', 'Concluído'].includes(item.status) ? item.status : 'Pendente',
+        observacoes: item.observacoes || ''
+      }));
+    }
+
+    async function loadFromGoogleSheets() {
+      const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=load`, {
+        method: 'GET',
+        cache: 'no-store'
+      });
+
+      if (!response.ok) {
+        throw new Error('Falha ao carregar dados online.');
+      }
+
+      const data = await response.json();
+      return normalizeRows(data.rows || []);
+    }
+
+    async function saveToGoogleSheets(rows) {
+      const payload = { rows: normalizeRows(rows) };
+
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+
+      const text = await response.text();
+      let result = {};
+      try {
+        result = JSON.parse(text);
+      } catch (e) {
+        result = {};
+      }
+
+      if (!response.ok || result.success === false) {
+        throw new Error(result.error || 'Falha ao salvar dados online.');
+      }
+
+      return result;
+    }
+
+    async function handleManualRemoteSave() {
+      try {
+        saveRemoteBtn.disabled = true;
+        saveRemoteBtn.textContent = 'Salvando...';
+        const rows = getRowsData();
+        await saveToGoogleSheets(rows);
+        saveLocalData(true);
+        updateSaveLabel(`Salvo online em ${formatNow()}`);
+        showToast('Dados salvos no Google Sheets.');
+      } catch (error) {
+        console.error(error);
+        showToast('Erro ao salvar online. Verifique o Apps Script.');
+      } finally {
+        saveRemoteBtn.disabled = false;
+        saveRemoteBtn.textContent = 'Salvar online';
+      }
+    }
+
+    async function handleManualRemoteLoad() {
+      try {
+        loadRemoteBtn.disabled = true;
+        loadRemoteBtn.textContent = 'Carregando...';
+        const rows = await loadFromGoogleSheets();
+        if (rows.length) {
+          setRowsData(rows);
+        } else {
+          createDefaultRows();
+        }
+        saveLocalData(true);
+        updateSaveLabel(`Carregado online em ${formatNow()}`);
+        showToast('Dados carregados do Google Sheets.');
+      } catch (error) {
+        console.error(error);
+        showToast('Erro ao carregar online. Verifique o Apps Script.');
+      } finally {
+        loadRemoteBtn.disabled = false;
+        loadRemoteBtn.textContent = 'Carregar online';
+      }
+    }
+
+    function scheduleRemoteAutoSave() {
+      clearTimeout(autoSaveRemoteTimer);
+      autoSaveRemoteTimer = setTimeout(async () => {
+        try {
+          await saveToGoogleSheets(getRowsData());
+          updateSaveLabel(`Auto salvo online em ${formatNow()}`);
+        } catch (error) {
+          console.error('Falha no auto save online:', error);
+        }
+      }, 1400);
     }
 
     addRowBtn.addEventListener('click', () => {
@@ -1655,7 +1771,8 @@
       updateOrderNumbers();
       updateSelectionState();
       updateMoveButtons();
-      saveData();
+      saveLocalData();
+      scheduleRemoteAutoSave();
       showToast('Nova linha adicionada.');
     });
 
@@ -1726,12 +1843,14 @@
         updateSelectionState();
         return;
       }
-      saveData();
+      saveLocalData();
+      scheduleRemoteAutoSave();
     });
 
     tableBody.addEventListener('input', (event) => {
       if (event.target.classList.contains('row-check')) return;
-      saveData();
+      saveLocalData();
+      scheduleRemoteAutoSave();
     });
 
     function getTableTSV() {
@@ -1811,7 +1930,7 @@
 
     exportBtn.addEventListener('click', () => {
       const payload = {
-        version: 12,
+        version: 13,
         exportedAt: new Date().toISOString(),
         theme: getCurrentTheme(),
         rows: getRowsData()
@@ -1866,13 +1985,7 @@
           const confirmed = confirm('Deseja importar os dados do arquivo? Os dados atuais serão substituídos.');
           if (!confirmed) return;
 
-          const normalizedRows = parsed.rows.map((item) => ({
-            objetivo: item.objetivo || '',
-            prazo: item.prazo || '',
-            status: ['Pendente', 'Em andamento', 'Concluído'].includes(item.status) ? item.status : 'Pendente',
-            observacoes: item.observacoes || ''
-          }));
-
+          const normalizedRows = normalizeRows(parsed.rows);
           setRowsData(normalizedRows);
 
           if (parsed.theme) {
@@ -1880,13 +1993,14 @@
           }
 
           const payload = {
-            version: 12,
+            version: 13,
             updatedAt: new Date().toISOString(),
             rows: getRowsData()
           };
 
           savePayload(payload);
           updateSaveLabel(`Importado em ${formatNow()}`);
+          scheduleRemoteAutoSave();
           showToast('Dados importados com sucesso.');
         } catch (error) {
           showToast('Erro ao ler o arquivo JSON.');
@@ -1899,6 +2013,8 @@
     clearBtn.addEventListener('click', clearAllData);
     pdfBtn.addEventListener('click', generatePDF);
     themeToggleBtn.addEventListener('click', toggleTheme);
+    saveRemoteBtn.addEventListener('click', handleManualRemoteSave);
+    loadRemoteBtn.addEventListener('click', handleManualRemoteLoad);
 
     function syncInputsForPrint() {
       document.querySelectorAll('input.cell-input').forEach((input) => {
@@ -1917,7 +2033,7 @@
 
     function generatePDF() {
       syncInputsForPrint();
-      saveData(true);
+      saveLocalData(true);
       showToast('Abrindo impressão do relatório. Escolha "Salvar como PDF".');
       setTimeout(() => window.print(), 250);
     }
@@ -1967,16 +2083,33 @@
     }
 
     window.addEventListener('beforeunload', () => {
-      saveData(true);
+      saveLocalData(true);
     });
 
-    loadTheme();
-    loadData();
-    updateOrderNumbers();
-    updateSelectionState();
-    updateMoveButtons();
-    updateThemeButtonLabel();
-    initRadioPlayer();
+    async function initApp() {
+      loadTheme();
+      loadLocalData();
+      updateOrderNumbers();
+      updateSelectionState();
+      updateMoveButtons();
+      updateThemeButtonLabel();
+      initRadioPlayer();
+
+      try {
+        const onlineRows = await loadFromGoogleSheets();
+        if (onlineRows.length) {
+          setRowsData(onlineRows);
+          saveLocalData(true);
+          updateSaveLabel(`Carregado online em ${formatNow()}`);
+          showToast('Dados online carregados com sucesso.');
+        }
+      } catch (error) {
+        console.error('Falha ao carregar dados online na inicialização:', error);
+        showToast('Página iniciada com dados locais.');
+      }
+    }
+
+    initApp();
   </script>
 
   <script async src="https://app3.weatherwidget.org/js/?id=ww_a8f8b462aca40"></script>
