@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Versão: v14.1 -->
+<!-- Versão: v15.1 -->
 <html lang="pt-BR" data-theme="classic">
 <head>
   <meta charset="UTF-8" />
@@ -138,7 +138,7 @@
       <div class="login-inner">
         <div class="login-kicker">Área restrita</div>
         <h2 class="login-title">Acesso do administrador</h2>
-        <p class="login-copy">Faça login para liberar a sessão nesta aba. O acesso permanece ativo até logout ou fechamento da aba.</p>
+        <p class="login-copy">Agora com login via GET para maior compatibilidade entre GitHub Pages e Web App do Apps Script.</p>
 
         <form id="loginForm" novalidate>
           <div class="login-grid">
@@ -149,7 +149,7 @@
           <button class="btn-primary" id="loginBtn" type="submit" style="width:100%;">Entrar</button>
 
           <div class="login-meta">
-            <div class="login-status" id="loginStatus">Sessão bloqueada.</div>
+            <div class="login-status" id="loginStatus">Verificando conexão...</div>
             <button class="btn-secondary" id="loginThemeBtn" type="button">Tema: Clássico</button>
           </div>
 
@@ -218,7 +218,7 @@
         <div class="action-card">
           <div>
             <div class="action-title">Painel privado</div>
-            <div class="action-copy">Sessão validada por aba. Faça login uma vez e use normalmente até sair ou fechar a aba.</div>
+            <div class="action-copy">Sessão por aba com login via GET, load via GET, logout via GET e salvamento online via POST.</div>
           </div>
 
           <div class="button-row">
@@ -245,7 +245,7 @@
         <div class="sheet-head">
           <div>
             <div class="sheet-title" id="planilha-titulo">Planilha de execução doméstica</div>
-            <div class="sheet-subtitle">Login, load, save e logout alinhados ao Apps Script revisado.</div>
+            <div class="sheet-subtitle">Versão revisada para melhor compatibilidade de rede entre HTML e Apps Script.</div>
           </div>
           <div class="top-auth">
             <div class="session-pill" id="sessionInfo">Não autenticado</div>
@@ -272,7 +272,7 @@
         </div>
 
         <div class="sheet-foot">
-          <div class="tip">Use o login do administrador configurado no Apps Script. A sessão fica ativa somente nesta aba.</div>
+          <div class="tip">Se houver erro de conexão, a tela de login mostrará uma mensagem mais precisa antes do acesso.</div>
           <div class="count" id="lineCountBottom">0 linhas</div>
         </div>
       </div>
@@ -284,15 +284,11 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    const STORAGE_KEY = 'sequencia_realizacao_domestica_v141';
+    const STORAGE_KEY = 'sequencia_realizacao_domestica_v15';
     const THEME_KEY = 'objetivos_theme_preference_v2';
-    const SESSION_KEY = 'objetivos_admin_session_v141';
+    const SESSION_KEY = 'objetivos_admin_session_v15';
     const THEMES = ['classic', 'hitech', 'hitech-dark'];
 
-    /*
-      URL DO WEB APP IMPLANTADO
-      Se você fizer nova implantação e a URL mudar, edite aqui.
-    */
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVI5tOvzaeO5tvM-Hp7RZX6NF5setieeo1zHlTm7AQmu_C0-dJBRqKBBp53LNFWFJQVA/exec';
 
     const revealElements = document.querySelectorAll('.reveal');
@@ -343,6 +339,7 @@
 
     let saveTimer = null;
     let autoSaveRemoteTimer = null;
+    let connectionOk = false;
 
     function showToast(message) {
       toast.textContent = message;
@@ -475,7 +472,7 @@
     function saveLocalData(immediate = false) {
       const persist = () => {
         savePayload({
-          version: 14.1,
+          version: 15,
           updatedAt: new Date().toISOString(),
           rows: getRowsData()
         });
@@ -641,16 +638,29 @@
         if (v !== undefined && v !== null) url.searchParams.set(k, v);
       });
 
-      const response = await fetch(url.toString(), {
-        method: 'GET',
-        redirect: 'follow',
-        cache: 'no-store'
-      });
+      let response;
+      try {
+        response = await fetch(url.toString(), {
+          method: 'GET',
+          cache: 'no-store',
+          redirect: 'follow'
+        });
+      } catch (error) {
+        throw new Error('Falha de rede ao acessar o Web App.');
+      }
 
       const text = await response.text();
       let data = {};
-      try { data = JSON.parse(text); } catch { throw new Error('Resposta inválida do servidor.'); }
-      if (!response.ok || data.success === false) throw new Error(data.error || 'Erro na requisição GET.');
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error('Resposta inválida do Web App.');
+      }
+
+      if (!response.ok || data.success === false) {
+        throw new Error(data.error || 'Erro na requisição GET.');
+      }
+
       return data;
     }
 
@@ -658,22 +668,49 @@
       const url = new URL(GOOGLE_SCRIPT_URL);
       url.searchParams.set('action', action);
 
-      const response = await fetch(url.toString(), {
-        method: 'POST',
-        redirect: 'follow',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload)
-      });
+      let response;
+      try {
+        response = await fetch(url.toString(), {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload),
+          redirect: 'follow'
+        });
+      } catch (error) {
+        throw new Error('Falha de rede ao salvar no Web App.');
+      }
 
       const text = await response.text();
       let data = {};
-      try { data = JSON.parse(text); } catch { throw new Error('Resposta inválida do servidor.'); }
-      if (!response.ok || data.success === false) throw new Error(data.error || 'Erro na requisição POST.');
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error('Resposta inválida do Web App.');
+      }
+
+      if (!response.ok || data.success === false) {
+        throw new Error(data.error || 'Erro na requisição POST.');
+      }
+
       return data;
     }
 
+    async function testConnection() {
+      try {
+        const data = await apiGet('ping');
+        connectionOk = !!data.success;
+        loginStatus.textContent = connectionOk ? 'Conexão com o Web App confirmada.' : 'Falha de conexão.';
+        return connectionOk;
+      } catch (error) {
+        connectionOk = false;
+        loginStatus.textContent = 'Falha de conexão com o Web App.';
+        loginError.textContent = error.message || 'Não foi possível conectar.';
+        return false;
+      }
+    }
+
     async function requestLogin(email, password) {
-      return apiPost('login', { email, password });
+      return apiGet('login', { email, password });
     }
 
     async function loadFromGoogleSheets() {
@@ -692,7 +729,9 @@
     async function logoutOnServer() {
       const s = getSession();
       if (!s?.token) return;
-      try { await apiPost('logout', { token: s.token }); } catch {}
+      try {
+        await apiGet('logout', { token: s.token });
+      } catch {}
     }
 
     async function handleManualRemoteSave() {
@@ -750,7 +789,11 @@
     async function handleLoginSubmit(event) {
       event.preventDefault();
       loginError.textContent = '';
-      loginStatus.textContent = 'Validando acesso...';
+
+      if (!connectionOk) {
+        const ok = await testConnection();
+        if (!ok) return;
+      }
 
       const email = loginEmail.value.trim();
       const password = loginPassword.value;
@@ -764,8 +807,10 @@
       try {
         loginBtn.disabled = true;
         loginBtn.textContent = 'Entrando...';
+        loginStatus.textContent = 'Validando acesso...';
 
         const result = await requestLogin(email, password);
+
         setSession({
           token: result.token,
           email: result.email || email,
@@ -777,7 +822,6 @@
         loginPassword.value = '';
         loginStatus.textContent = 'Sessão liberada nesta aba.';
         showToast('Login realizado com sucesso.');
-
         await handleManualRemoteLoad();
       } catch (error) {
         clearSession();
@@ -797,13 +841,18 @@
       updateSessionUI();
       loginForm.reset();
       loginError.textContent = '';
-      loginStatus.textContent = 'Sessão bloqueada.';
+      loginStatus.textContent = connectionOk ? 'Conexão com o Web App confirmada.' : 'Sessão bloqueada.';
       showToast('Sessão encerrada.');
     }
 
     addRowBtn.addEventListener('click', () => {
       tableBody.appendChild(createRow());
-      updateOrderNumbers(); updateSelectionState(); updateMoveButtons(); saveLocalData(); scheduleRemoteAutoSave(); showToast('Nova linha adicionada.');
+      updateOrderNumbers();
+      updateSelectionState();
+      updateMoveButtons();
+      saveLocalData();
+      scheduleRemoteAutoSave();
+      showToast('Nova linha adicionada.');
     });
 
     moveUpBtn.addEventListener('click', () => {
@@ -894,7 +943,7 @@
     });
 
     exportBtn.addEventListener('click', () => {
-      const payload = { version: 14.1, exportedAt: new Date().toISOString(), theme: getCurrentTheme(), rows: getRowsData() };
+      const payload = { version: 15, exportedAt: new Date().toISOString(), theme: getCurrentTheme(), rows: getRowsData() };
       const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -936,7 +985,7 @@
           if (!confirm('Deseja importar os dados do arquivo? Os dados atuais serão substituídos.')) return;
           setRowsData(normalizeRows(parsed.rows));
           if (parsed.theme) applyTheme(parsed.theme, true);
-          savePayload({ version: 14.1, updatedAt: new Date().toISOString(), rows: getRowsData() });
+          savePayload({ version: 15, updatedAt: new Date().toISOString(), rows: getRowsData() });
           scheduleRemoteAutoSave();
           showToast('Dados importados com sucesso.');
         } catch {
@@ -996,7 +1045,6 @@
     saveRemoteBtn.addEventListener('click', handleManualRemoteSave);
     loadRemoteBtn.addEventListener('click', handleManualRemoteLoad);
     loginForm.addEventListener('submit', handleLoginSubmit);
-
     window.addEventListener('beforeunload', () => saveLocalData(true));
 
     async function initApp() {
@@ -1008,9 +1056,9 @@
       updateThemeButtonLabel();
       initRadioPlayer();
       updateSessionUI();
+      await testConnection();
 
       if (isAuthenticated()) {
-        loginStatus.textContent = 'Sessão restaurada nesta aba.';
         try {
           const rows = await loadFromGoogleSheets();
           if (rows.length) {
@@ -1022,8 +1070,6 @@
           updateSessionUI();
           showToast(error.message || 'Sessão inválida.');
         }
-      } else {
-        loginStatus.textContent = 'Sessão bloqueada.';
       }
     }
 
