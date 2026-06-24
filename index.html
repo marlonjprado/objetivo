@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Versão: v16.0 -->
+<!-- Versão: v16.2 -->
 <html lang="pt-BR" data-theme="classic">
 <head>
   <meta charset="UTF-8" />
@@ -89,10 +89,10 @@
     .row-check:checked{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
     .row-check:checked::after{content:"";position:absolute;left:7px;top:3px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
     .order-pill{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 12px;border-radius:999px;background:var(--pill-bg);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.25);font-weight:700;transition:background var(--transition),border-color var(--transition)}
-    .cell-input,.cell-select,.login-input{width:100%;border:1px solid transparent;background:var(--input-bg);color:var(--ink);font:inherit;padding:12px 13px;border-radius:12px;outline:none;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease,transform .18s ease,color .18s ease}
-    .cell-input::placeholder,.login-input::placeholder{color:color-mix(in srgb,var(--muted) 80%,white 20%)}
-    .cell-input:hover,.cell-select:hover,.login-input:hover{background:var(--input-bg-hover)}
-    .cell-input:focus,.cell-select:focus,.login-input:focus{border-color:color-mix(in srgb,var(--accent) 34%,transparent);background:var(--input-bg-focus);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent);transform:translateY(-1px)}
+    .cell-input,.cell-select,.login-input,.diary-search-input{width:100%;border:1px solid transparent;background:var(--input-bg);color:var(--ink);font:inherit;padding:12px 13px;border-radius:12px;outline:none;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease,transform .18s ease,color .18s ease}
+    .cell-input::placeholder,.login-input::placeholder,.diary-search-input::placeholder{color:color-mix(in srgb,var(--muted) 80%,white 20%)}
+    .cell-input:hover,.cell-select:hover,.login-input:hover,.diary-search-input:hover{background:var(--input-bg-hover)}
+    .cell-input:focus,.cell-select:focus,.login-input:focus,.diary-search-input:focus{border-color:color-mix(in srgb,var(--accent) 34%,transparent);background:var(--input-bg-focus);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent);transform:translateY(-1px)}
     .remove-btn,.move-btn{width:44px;height:44px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.16);padding:0}
     .remove-btn{background:var(--danger-soft);color:var(--danger);border:1px solid var(--danger-border)}
     .remove-btn:hover{background:color-mix(in srgb,var(--danger) 14%,transparent);transform:translateY(-2px) scale(1.03)}
@@ -126,12 +126,40 @@
     .session-pill{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.65);color:var(--muted);border:1px solid var(--badge-border);font-size:.88rem;white-space:nowrap}
     html[data-theme="hitech-dark"] .session-pill{background:rgba(255,255,255,.04)}
     .logout-btn{padding:10px 14px;border-radius:999px}
+
     .diary-panel{margin-top:18px}
-    #diaryContent{font-family:inherit;line-height:1.7;min-height:220px;resize:vertical;width:100%}
+    .diary-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:16px;padding:16px}
+    .diary-sidebar{display:grid;gap:12px;align-content:start}
+    .diary-box{background:var(--paper-strong);border:1px solid color-mix(in srgb,var(--surface-border) 80%,transparent);border-radius:20px;padding:14px;box-shadow:var(--shadow-soft)}
+    html[data-theme="hitech-dark"] .diary-box{background:rgba(255,255,255,.03)}
+    .diary-search-wrap{display:grid;gap:10px}
+    .diary-list{display:grid;gap:8px;max-height:520px;overflow:auto;padding-right:4px}
+    .diary-date-item{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:12px 14px;border-radius:14px;background:var(--input-bg);color:var(--ink);border:1px solid transparent}
+    .diary-date-item:hover{background:var(--input-bg-hover)}
+    .diary-date-item.active{background:var(--selected-row);border-color:var(--selected-outline)}
+    .diary-date-main{display:grid;gap:2px}
+    .diary-date-label{font-weight:800}
+    .diary-date-sub{font-size:.82rem;color:var(--muted)}
+    .diary-empty{color:var(--muted);font-size:.92rem;padding:8px 2px}
+    .diary-main{display:grid;gap:12px}
+    .diary-meta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+    .diary-status{font-size:.9rem;color:var(--muted)}
+    .diary-toolbar{display:flex;flex-wrap:wrap;gap:8px}
+    .diary-toolbar button{padding:10px 12px;border-radius:12px;background:var(--paper-strong);color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow-soft)}
+    .diary-toolbar button:hover{transform:translateY(-1px)}
+    .diary-editor{min-height:360px;max-height:520px;overflow-y:auto;padding:16px;border-radius:16px;background:var(--input-bg);border:1px solid var(--line);color:var(--ink);line-height:1.7;outline:none}
+    .diary-editor:focus{border-color:color-mix(in srgb,var(--accent) 34%,transparent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+    .diary-editor p{margin:.4em 0}
+    .autosave-dot{display:inline-flex;align-items:center;gap:8px}
+    .autosave-dot::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--muted);opacity:.5}
+    .autosave-dot.is-saving::before{background:var(--accent)}
+    .autosave-dot.is-saved::before{background:var(--success);opacity:1}
+    .autosave-dot.is-error::before{background:var(--danger);opacity:1}
+
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-    @media (max-width:1080px){.hero{grid-template-columns:1fr;gap:16px}.sheet-head{grid-template-columns:1fr}.top-auth{justify-self:start}}
+    @media (max-width:1080px){.hero{grid-template-columns:1fr;gap:16px}.sheet-head{grid-template-columns:1fr}.top-auth{justify-self:start}.diary-layout{grid-template-columns:1fr}}
     @media (max-width:720px){.sg-radio-player{flex-wrap:wrap;gap:12px}.sg-radio-player__volume{width:100%;min-width:0}.sg-radio-player__range{width:100%}}
-    @media (max-width:640px){.shell{width:min(calc(100% - 18px),var(--max));padding-top:14px}.hero-main,.hero-side{padding:16px}h1{max-width:10ch;font-size:clamp(2rem,9vw,3rem)}.button-row button{flex:1 1 100%}.mini-stat{grid-template-columns:1fr}.login-card{padding:20px;border-radius:24px}}
+    @media (max-width:640px){.shell{width:min(calc(100% - 18px),var(--max));padding-top:14px}.hero-main,.hero-side{padding:16px}h1{max-width:10ch;font-size:clamp(2rem,9vw,3rem)}.button-row button{flex:1 1 100%}.mini-stat{grid-template-columns:1fr}.login-card{padding:20px;border-radius:24px}.diary-toolbar button{flex:1 1 auto}}
   </style>
 </head>
 <body>
@@ -275,16 +303,58 @@
         <div class="sheet-head">
           <div>
             <div class="sheet-title" id="diario-titulo">Diário</div>
-            <div class="sheet-subtitle">Anotações diárias vinculadas à sessão atual.</div>
+            <div class="sheet-subtitle">Uma página por dia, com editor rico, histórico, busca, auto-save e navegação rápida.</div>
           </div>
           <div class="top-auth">
-            <div class="session-pill" id="diaryDateLabel">Hoje</div>
-            <button class="btn-secondary" id="loadDiaryBtn" type="button">Carregar diário</button>
-            <button class="btn-primary" id="saveDiaryBtn" type="button">Salvar diário</button>
+            <div class="session-pill" id="diaryDateLabel">--/--/----</div>
+            <div class="session-pill" id="diaryUpdatedInfo">Última edição: —</div>
           </div>
         </div>
-        <div style="padding:18px 20px;">
-          <textarea id="diaryContent" class="cell-input" placeholder="Escreva aqui suas anotações do dia..."></textarea>
+
+        <div class="diary-layout">
+          <aside class="diary-sidebar">
+            <section class="diary-box">
+              <div class="diary-search-wrap">
+                <input id="diarySearchInput" class="diary-search-input" type="search" placeholder="Buscar por data (dd/mm/aaaa ou aaaa-mm-dd)">
+                <div class="button-row">
+                  <button class="btn-secondary" id="todayDiaryBtn" type="button">Hoje</button>
+                  <button class="btn-secondary" id="prevDiaryBtn" type="button">← Anterior</button>
+                  <button class="btn-secondary" id="nextDiaryBtn" type="button">Próximo →</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="diary-box">
+              <div class="action-title" style="font-size:1rem;margin-bottom:10px;">Datas salvas</div>
+              <div class="diary-list" id="diaryDatesList"></div>
+              <div class="diary-empty" id="diaryDatesEmpty">Nenhuma data encontrada.</div>
+            </section>
+          </aside>
+
+          <section class="diary-main">
+            <div class="diary-meta-row">
+              <input id="diaryTitle" class="cell-input" type="text" placeholder="Título do dia (opcional)">
+              <div class="top-auth">
+                <div class="diary-status autosave-dot" id="diaryAutoSaveStatus">Sem alterações</div>
+                <button class="btn-secondary" id="loadDiaryBtn" type="button">Carregar</button>
+                <button class="btn-primary" id="saveDiaryBtn" type="button">Salvar</button>
+              </div>
+            </div>
+
+            <div class="diary-toolbar" id="diaryToolbar">
+              <button type="button" data-cmd="bold" title="Negrito"><b>B</b></button>
+              <button type="button" data-cmd="italic" title="Itálico"><i>I</i></button>
+              <button type="button" data-cmd="underline" title="Sublinhado"><u>U</u></button>
+              <button type="button" data-cmd="insertUnorderedList" title="Lista">• Lista</button>
+              <button type="button" data-cmd="insertOrderedList" title="Lista numerada">1. Lista</button>
+              <button type="button" data-cmd="justifyLeft" title="Alinhar à esquerda">Esq.</button>
+              <button type="button" data-cmd="justifyCenter" title="Centralizar">Centro</button>
+              <button type="button" data-cmd="justifyRight" title="Alinhar à direita">Dir.</button>
+              <button type="button" data-cmd="removeFormat" title="Limpar formatação">Limpar</button>
+            </div>
+
+            <div id="diaryEditor" class="diary-editor" contenteditable="true" spellcheck="true"></div>
+          </section>
         </div>
       </div>
     </section>
@@ -299,7 +369,7 @@
     const THEME_KEY = 'objetivos_theme_preference_v2';
     const SESSION_KEY = 'objetivos_admin_session_v15';
     const THEMES = ['classic', 'hitech', 'hitech-dark'];
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx1pVcltIFkYlaR6FQw32dj2CKVSAoPdYUhXtXFXIiKL0_AkztlTD3kKNz7h5yYzt8Jkg/exec';
+    const GOOGLE_SCRIPT_URL = 'COLE_AQUI_O_LINK_DO_SEU_WEB_APP';
 
     const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -346,14 +416,30 @@
     const lineCountBottom = document.getElementById('lineCountBottom');
     const selectedCountTop = document.getElementById('selectedCountTop');
     const toast = document.getElementById('toast');
-    const diaryContent = document.getElementById('diaryContent');
+
+    const diaryTitle = document.getElementById('diaryTitle');
+    const diaryEditor = document.getElementById('diaryEditor');
+    const diaryToolbar = document.getElementById('diaryToolbar');
     const saveDiaryBtn = document.getElementById('saveDiaryBtn');
     const loadDiaryBtn = document.getElementById('loadDiaryBtn');
+    const prevDiaryBtn = document.getElementById('prevDiaryBtn');
+    const nextDiaryBtn = document.getElementById('nextDiaryBtn');
+    const todayDiaryBtn = document.getElementById('todayDiaryBtn');
     const diaryDateLabel = document.getElementById('diaryDateLabel');
+    const diaryUpdatedInfo = document.getElementById('diaryUpdatedInfo');
+    const diaryDatesList = document.getElementById('diaryDatesList');
+    const diaryDatesEmpty = document.getElementById('diaryDatesEmpty');
+    const diarySearchInput = document.getElementById('diarySearchInput');
+    const diaryAutoSaveStatus = document.getElementById('diaryAutoSaveStatus');
 
     let saveTimer = null;
     let autoSaveRemoteTimer = null;
     let connectionOk = false;
+
+    let currentDiaryDate = '';
+    let diaryAutoSaveTimer = null;
+    let diaryDatesCache = [];
+    let diaryDirty = false;
 
     function showToast(message) {
       toast.textContent = message;
@@ -659,7 +745,7 @@
           cache: 'no-store',
           redirect: 'follow'
         });
-      } catch (error) {
+      } catch {
         throw new Error('Falha de rede ao acessar o Web App.');
       }
       const text = await response.text();
@@ -686,7 +772,7 @@
           body: JSON.stringify(payload),
           redirect: 'follow'
         });
-      } catch (error) {
+      } catch {
         throw new Error('Falha de rede ao salvar no Web App.');
       }
       const text = await response.text();
@@ -736,9 +822,7 @@
     async function logoutOnServer() {
       const s = getSession();
       if (!s?.token) return;
-      try {
-        await apiGet('logout', { token: s.token });
-      } catch {}
+      try { await apiGet('logout', { token: s.token }); } catch {}
     }
 
     async function handleManualRemoteSave() {
@@ -823,7 +907,7 @@
         loginStatus.textContent = 'Sessão liberada nesta aba.';
         showToast('Login realizado com sucesso.');
         await handleManualRemoteLoad();
-        await loadDiary();
+        await diaryBootstrapAfterAuth();
       } catch (error) {
         clearSession();
         updateSessionUI();
@@ -854,42 +938,262 @@
       return `${year}-${month}-${day}`;
     }
 
-    function updateDiaryDateLabel() {
-      diaryDateLabel.textContent = getTodayISO();
+    function formatISODate(iso) {
+      if (!iso || !iso.includes('-')) return iso || '';
+      const [y, m, d] = iso.split('-');
+      return `${d}/${m}/${y}`;
     }
 
-    async function loadDiary() {
+    function shiftDateISO(iso, deltaDays) {
+      const d = new Date(`${iso}T00:00:00`);
+      d.setDate(d.getDate() + deltaDays);
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    }
+
+    function updateDiaryDateLabel() {
+      diaryDateLabel.textContent = formatISODate(currentDiaryDate);
+    }
+
+    function setDiaryStatus(text, state = '') {
+      diaryAutoSaveStatus.textContent = text;
+      diaryAutoSaveStatus.classList.remove('is-saving', 'is-saved', 'is-error');
+      if (state) diaryAutoSaveStatus.classList.add(state);
+    }
+
+    function setDiaryUpdatedInfo(updatedAt) {
+      diaryUpdatedInfo.textContent = updatedAt ? `Última edição: ${formatNow(new Date(updatedAt))}` : 'Última edição: —';
+    }
+
+    function getDiaryLocalKey(date) {
+      return `diary_v16_${date}`;
+    }
+
+    function getDiaryEditorContent() {
+      return diaryEditor.innerHTML || '';
+    }
+
+    function setDiaryEditorContent(html) {
+      diaryEditor.innerHTML = html || '';
+      if (!diaryEditor.innerHTML.trim()) diaryEditor.innerHTML = '<p></p>';
+    }
+
+    function saveDiaryLocal(date = currentDiaryDate) {
+      const payload = {
+        date,
+        title: diaryTitle.value || '',
+        contentHtml: getDiaryEditorContent(),
+        updatedAt: new Date().toISOString()
+      };
+      localStorage.setItem(getDiaryLocalKey(date), JSON.stringify(payload));
+      return payload;
+    }
+
+    function loadDiaryLocal(date) {
+      try {
+        const raw = localStorage.getItem(getDiaryLocalKey(date));
+        return raw ? JSON.parse(raw) : null;
+      } catch {
+        return null;
+      }
+    }
+
+    function normalizeSearchToISO(value) {
+      const v = String(value || '').trim();
+      if (!v) return '';
+      if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
+      if (/^\d{2}\/\d{2}\/\d{4}$/.test(v)) {
+        const [d, m, y] = v.split('/');
+        return `${y}-${m}-${d}`;
+      }
+      return v;
+    }
+
+    function renderDiaryDatesList(filter = '') {
+      const f = normalizeSearchToISO(filter).toLowerCase();
+      const filtered = diaryDatesCache.filter(date => {
+        if (!f) return true;
+        return date.toLowerCase().includes(f) || formatISODate(date).toLowerCase().includes(filter.toLowerCase());
+      });
+
+      diaryDatesList.innerHTML = '';
+      diaryDatesEmpty.style.display = filtered.length ? 'none' : 'block';
+
+      filtered.forEach(date => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `diary-date-item${date === currentDiaryDate ? ' active' : ''}`;
+        btn.innerHTML = `
+          <span class="diary-date-main">
+            <span class="diary-date-label">${formatISODate(date)}</span>
+            <span class="diary-date-sub">${date === getTodayISO() ? 'Hoje' : 'Registro diário'}</span>
+          </span>
+        `;
+        btn.addEventListener('click', async () => {
+          await navigateToDiaryDate(date);
+        });
+        diaryDatesList.appendChild(btn);
+      });
+    }
+
+    async function refreshDiaryDatesList() {
+      if (!isAuthenticated()) return;
+      try {
+        const s = getSession();
+        const data = await apiGet('listDiaryDates', { token: s.token });
+        diaryDatesCache = Array.isArray(data.dates) ? data.dates.slice() : [];
+        if (!diaryDatesCache.includes(currentDiaryDate)) {
+          diaryDatesCache.unshift(currentDiaryDate);
+          diaryDatesCache = [...new Set(diaryDatesCache)].sort().reverse();
+        }
+        renderDiaryDatesList(diarySearchInput.value);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    async function loadDiaryFromServer(date) {
+      const s = getSession();
+      return apiGet('loadDiary', { token: s.token, date });
+    }
+
+    async function saveDiaryToServer(date) {
+      const s = getSession();
+      return apiPost('saveDiary', {
+        token: s.token,
+        date,
+        title: diaryTitle.value || '',
+        contentHtml: getDiaryEditorContent()
+      });
+    }
+
+    async function loadDiaryForDate(date) {
       if (!isAuthenticated()) {
         showToast('Faça login para acessar o diário.');
         return;
       }
-      const s = getSession();
-      const date = getTodayISO();
+
+      currentDiaryDate = date;
+      updateDiaryDateLabel();
+
+      const local = loadDiaryLocal(date);
+      if (local) {
+        diaryTitle.value = local.title || '';
+        setDiaryEditorContent(local.contentHtml || '');
+        setDiaryUpdatedInfo(local.updatedAt || '');
+      } else {
+        diaryTitle.value = '';
+        setDiaryEditorContent('');
+        setDiaryUpdatedInfo('');
+      }
+
       try {
-        const data = await apiGet('loadDiary', { token: s.token, date });
-        diaryContent.value = data.content || '';
+        const data = await loadDiaryFromServer(date);
+        diaryTitle.value = data.title || '';
+        setDiaryEditorContent(data.contentHtml || '');
+        setDiaryUpdatedInfo(data.updatedAt || '');
+        saveDiaryLocal(date);
+        diaryDirty = false;
+        setDiaryStatus('Conteúdo carregado', 'is-saved');
       } catch (error) {
-        showToast(error.message || 'Erro ao carregar o diário.');
+        setDiaryStatus('Modo local ativo', 'is-error');
+        console.error(error);
+      }
+
+      await refreshDiaryDatesList();
+    }
+
+    async function saveDiary(showFeedback = false) {
+      if (!isAuthenticated()) return;
+      setDiaryStatus('Salvando...', 'is-saving');
+      const localPayload = saveDiaryLocal(currentDiaryDate);
+      try {
+        const response = await saveDiaryToServer(currentDiaryDate);
+        diaryDirty = false;
+        setDiaryUpdatedInfo(new Date().toISOString());
+        setDiaryStatus('Salvo automaticamente', 'is-saved');
+        if (!diaryDatesCache.includes(currentDiaryDate)) {
+          diaryDatesCache.unshift(currentDiaryDate);
+          diaryDatesCache = [...new Set(diaryDatesCache)].sort().reverse();
+        }
+        renderDiaryDatesList(diarySearchInput.value);
+        if (showFeedback) showToast(response.message || `Diário de ${formatISODate(currentDiaryDate)} salvo.`);
+      } catch (error) {
+        console.error(error);
+        setDiaryUpdatedInfo(localPayload.updatedAt || '');
+        setDiaryStatus('Salvo localmente • erro online', 'is-error');
+        if (showFeedback) showToast(error.message || 'Erro ao salvar o diário.');
       }
     }
 
-    async function saveDiary() {
-      if (!isAuthenticated()) {
-        showToast('Faça login para salvar o diário.');
-        return;
-      }
-      const s = getSession();
-      const date = getTodayISO();
-      try {
-        await apiPost('saveDiary', {
-          token: s.token,
-          date,
-          content: diaryContent.value || ''
-        });
-        showToast('Diário salvo com sucesso.');
-      } catch (error) {
-        showToast(error.message || 'Erro ao salvar o diário.');
-      }
+    function scheduleDiaryAutoSave() {
+      diaryDirty = true;
+      setDiaryStatus('Alterações pendentes...', '');
+      clearTimeout(diaryAutoSaveTimer);
+      diaryAutoSaveTimer = setTimeout(() => saveDiary(false), 1200);
+    }
+
+    async function navigateToDiaryDate(date) {
+      if (diaryDirty) await saveDiary(false);
+      await loadDiaryForDate(date);
+    }
+
+    function bindDiaryToolbar() {
+      diaryToolbar.addEventListener('click', (event) => {
+        const btn = event.target.closest('button[data-cmd]');
+        if (!btn) return;
+        const cmd = btn.getAttribute('data-cmd');
+        document.execCommand(cmd, false, null);
+        diaryEditor.focus();
+        scheduleDiaryAutoSave();
+      });
+    }
+
+    function initDiaryEvents() {
+      bindDiaryToolbar();
+
+      diaryTitle.addEventListener('input', scheduleDiaryAutoSave);
+      diaryEditor.addEventListener('input', scheduleDiaryAutoSave);
+
+      prevDiaryBtn.addEventListener('click', async () => {
+        await navigateToDiaryDate(shiftDateISO(currentDiaryDate, -1));
+      });
+
+      nextDiaryBtn.addEventListener('click', async () => {
+        await navigateToDiaryDate(shiftDateISO(currentDiaryDate, 1));
+      });
+
+      todayDiaryBtn.addEventListener('click', async () => {
+        await navigateToDiaryDate(getTodayISO());
+      });
+
+      loadDiaryBtn.addEventListener('click', async () => {
+        await loadDiaryForDate(currentDiaryDate);
+        showToast(`Diário de ${formatISODate(currentDiaryDate)} carregado.`);
+      });
+
+      saveDiaryBtn.addEventListener('click', async () => {
+        await saveDiary(true);
+      });
+
+      diarySearchInput.addEventListener('input', () => {
+        renderDiaryDatesList(diarySearchInput.value);
+      });
+
+      diarySearchInput.addEventListener('keydown', async (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          const parsed = normalizeSearchToISO(diarySearchInput.value);
+          if (/^\d{4}-\d{2}-\d{2}$/.test(parsed)) {
+            await navigateToDiaryDate(parsed);
+          }
+        }
+      });
+    }
+
+    async function diaryBootstrapAfterAuth() {
+      currentDiaryDate = currentDiaryDate || getTodayISO();
+      await loadDiaryForDate(currentDiaryDate);
+      await refreshDiaryDatesList();
     }
 
     addRowBtn.addEventListener('click', () => {
@@ -1092,11 +1396,13 @@
     saveRemoteBtn.addEventListener('click', handleManualRemoteSave);
     loadRemoteBtn.addEventListener('click', handleManualRemoteLoad);
     loginForm.addEventListener('submit', handleLoginSubmit);
-    saveDiaryBtn.addEventListener('click', saveDiary);
-    loadDiaryBtn.addEventListener('click', loadDiary);
-    window.addEventListener('beforeunload', () => saveLocalData(true));
+    window.addEventListener('beforeunload', () => {
+      saveLocalData(true);
+      if (currentDiaryDate) saveDiaryLocal(currentDiaryDate);
+    });
 
     async function initApp() {
+      currentDiaryDate = getTodayISO();
       loadTheme();
       loadLocalData();
       updateOrderNumbers();
@@ -1104,9 +1410,13 @@
       updateMoveButtons();
       updateThemeButtonLabel();
       updateDiaryDateLabel();
+      setDiaryStatus('Sem alterações', '');
+      setDiaryUpdatedInfo('');
       initRadioPlayer();
+      initDiaryEvents();
       updateSessionUI();
       await testConnection();
+
       if (isAuthenticated()) {
         try {
           const rows = await loadFromGoogleSheets();
@@ -1114,11 +1424,20 @@
             setRowsData(rows);
             saveLocalData(true);
           }
-          await loadDiary();
+          await diaryBootstrapAfterAuth();
         } catch (error) {
           clearSession();
           updateSessionUI();
           showToast(error.message || 'Sessão inválida.');
+        }
+      } else {
+        const local = loadDiaryLocal(currentDiaryDate);
+        if (local) {
+          diaryTitle.value = local.title || '';
+          setDiaryEditorContent(local.contentHtml || '');
+          setDiaryUpdatedInfo(local.updatedAt || '');
+        } else {
+          setDiaryEditorContent('');
         }
       }
     }
