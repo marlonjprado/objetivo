@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Versão: v15.1 -->
+<!-- Versão: v16.0 -->
 <html lang="pt-BR" data-theme="classic">
 <head>
   <meta charset="UTF-8" />
@@ -126,6 +126,8 @@
     .session-pill{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.65);color:var(--muted);border:1px solid var(--badge-border);font-size:.88rem;white-space:nowrap}
     html[data-theme="hitech-dark"] .session-pill{background:rgba(255,255,255,.04)}
     .logout-btn{padding:10px 14px;border-radius:999px}
+    .diary-panel{margin-top:18px}
+    #diaryContent{font-family:inherit;line-height:1.7;min-height:220px;resize:vertical;width:100%}
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
     @media (max-width:1080px){.hero{grid-template-columns:1fr;gap:16px}.sheet-head{grid-template-columns:1fr}.top-auth{justify-self:start}}
     @media (max-width:720px){.sg-radio-player{flex-wrap:wrap;gap:12px}.sg-radio-player__volume{width:100%;min-width:0}.sg-radio-player__range{width:100%}}
@@ -139,20 +141,16 @@
         <div class="login-kicker">Área restrita</div>
         <h2 class="login-title">Acesso do administrador</h2>
         <p class="login-copy">Agora com login via GET para maior compatibilidade entre GitHub Pages e Web App do Apps Script.</p>
-
         <form id="loginForm" novalidate>
           <div class="login-grid">
             <input class="login-input" id="loginEmail" type="email" placeholder="E-mail autorizado" autocomplete="username" required>
             <input class="login-input" id="loginPassword" type="password" placeholder="Senha" autocomplete="current-password" required>
           </div>
-
           <button class="btn-primary" id="loginBtn" type="submit" style="width:100%;">Entrar</button>
-
           <div class="login-meta">
             <div class="login-status" id="loginStatus">Verificando conexão...</div>
             <button class="btn-secondary" id="loginThemeBtn" type="button">Tema: Clássico</button>
           </div>
-
           <div class="login-error" id="loginError" aria-live="polite"></div>
         </form>
       </div>
@@ -165,7 +163,6 @@
         <div class="hero-head">
           <h1>Objetivos</h1>
         </div>
-
         <div class="hero-media-grid">
           <section class="widget-card" aria-label="Previsão do tempo">
             <div class="widget-wrap">
@@ -175,7 +172,6 @@
               </div>
             </div>
           </section>
-
           <section class="radio-shell" aria-label="Rádio online">
             <div class="radio-stack">
               <div class="sg-radio-player">
@@ -214,13 +210,11 @@
             <div class="mini-value" style="font-size:1.2rem;" id="sessionStateTop">Fechada</div>
           </div>
         </div>
-
         <div class="action-card">
           <div>
             <div class="action-title">Painel privado</div>
             <div class="action-copy">Sessão por aba com login via GET, load via GET, logout via GET e salvamento online via POST.</div>
           </div>
-
           <div class="button-row">
             <button class="btn-primary" id="saveRemoteBtn" type="button">Salvar online</button>
             <button class="btn-secondary" id="loadRemoteBtn" type="button">Carregar online</button>
@@ -252,7 +246,6 @@
             <button class="btn-danger logout-btn" id="logoutBtn" type="button">Sair</button>
           </div>
         </div>
-
         <div class="table-wrap">
           <table>
             <thead>
@@ -270,10 +263,28 @@
             <tbody id="tableBody"></tbody>
           </table>
         </div>
-
         <div class="sheet-foot">
           <div class="tip">Se houver erro de conexão, a tela de login mostrará uma mensagem mais precisa antes do acesso.</div>
           <div class="count" id="lineCountBottom">0 linhas</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel diary-panel reveal" aria-labelledby="diario-titulo">
+      <div class="sheet-frame">
+        <div class="sheet-head">
+          <div>
+            <div class="sheet-title" id="diario-titulo">Diário</div>
+            <div class="sheet-subtitle">Anotações diárias vinculadas à sessão atual.</div>
+          </div>
+          <div class="top-auth">
+            <div class="session-pill" id="diaryDateLabel">Hoje</div>
+            <button class="btn-secondary" id="loadDiaryBtn" type="button">Carregar diário</button>
+            <button class="btn-primary" id="saveDiaryBtn" type="button">Salvar diário</button>
+          </div>
+        </div>
+        <div style="padding:18px 20px;">
+          <textarea id="diaryContent" class="cell-input" placeholder="Escreva aqui suas anotações do dia..."></textarea>
         </div>
       </div>
     </section>
@@ -288,7 +299,6 @@
     const THEME_KEY = 'objetivos_theme_preference_v2';
     const SESSION_KEY = 'objetivos_admin_session_v15';
     const THEMES = ['classic', 'hitech', 'hitech-dark'];
-
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVI5tOvzaeO5tvM-Hp7RZX6NF5setieeo1zHlTm7AQmu_C0-dJBRqKBBp53LNFWFJQVA/exec';
 
     const revealElements = document.querySelectorAll('.reveal');
@@ -336,6 +346,10 @@
     const lineCountBottom = document.getElementById('lineCountBottom');
     const selectedCountTop = document.getElementById('selectedCountTop');
     const toast = document.getElementById('toast');
+    const diaryContent = document.getElementById('diaryContent');
+    const saveDiaryBtn = document.getElementById('saveDiaryBtn');
+    const loadDiaryBtn = document.getElementById('loadDiaryBtn');
+    const diaryDateLabel = document.getElementById('diaryDateLabel');
 
     let saveTimer = null;
     let autoSaveRemoteTimer = null;
@@ -409,7 +423,6 @@
       const order = tableBody.querySelectorAll('tr').length + 1;
       const tr = document.createElement('tr');
       const status = data.status || 'Pendente';
-
       tr.innerHTML = `
         <td class="select-col select-cell"><div class="select-wrap"><input class="row-check" type="checkbox" aria-label="Selecionar linha para ações"></div></td>
         <td class="order-col"><span class="order-pill">${order}</span></td>
@@ -573,7 +586,8 @@
       const prev = row.previousElementSibling;
       if (!prev) return showToast('A linha já está no topo.');
       tableBody.insertBefore(row, prev);
-      updateOrderNumbers(); updateSelectionState(); updateMoveButtons(); saveLocalData(true); scheduleRemoteAutoSave(); showToast('Linha movida para cima.');
+      updateOrderNumbers(); updateSelectionState(); updateMoveButtons();
+      saveLocalData(true); scheduleRemoteAutoSave(); showToast('Linha movida para cima.');
     }
 
     function moveRowDown(row) {
@@ -581,7 +595,8 @@
       const next = row.nextElementSibling;
       if (!next) return showToast('A linha já está na última posição.');
       tableBody.insertBefore(next, row);
-      updateOrderNumbers(); updateSelectionState(); updateMoveButtons(); saveLocalData(true); scheduleRemoteAutoSave(); showToast('Linha movida para baixo.');
+      updateOrderNumbers(); updateSelectionState(); updateMoveButtons();
+      saveLocalData(true); scheduleRemoteAutoSave(); showToast('Linha movida para baixo.');
     }
 
     function clearAllData() {
@@ -637,7 +652,6 @@
       Object.entries(params).forEach(([k, v]) => {
         if (v !== undefined && v !== null) url.searchParams.set(k, v);
       });
-
       let response;
       try {
         response = await fetch(url.toString(), {
@@ -648,7 +662,6 @@
       } catch (error) {
         throw new Error('Falha de rede ao acessar o Web App.');
       }
-
       const text = await response.text();
       let data = {};
       try {
@@ -656,18 +669,15 @@
       } catch {
         throw new Error('Resposta inválida do Web App.');
       }
-
       if (!response.ok || data.success === false) {
         throw new Error(data.error || 'Erro na requisição GET.');
       }
-
       return data;
     }
 
     async function apiPost(action, payload = {}) {
       const url = new URL(GOOGLE_SCRIPT_URL);
       url.searchParams.set('action', action);
-
       let response;
       try {
         response = await fetch(url.toString(), {
@@ -679,7 +689,6 @@
       } catch (error) {
         throw new Error('Falha de rede ao salvar no Web App.');
       }
-
       const text = await response.text();
       let data = {};
       try {
@@ -687,11 +696,9 @@
       } catch {
         throw new Error('Resposta inválida do Web App.');
       }
-
       if (!response.ok || data.success === false) {
         throw new Error(data.error || 'Erro na requisição POST.');
       }
-
       return data;
     }
 
@@ -789,40 +796,34 @@
     async function handleLoginSubmit(event) {
       event.preventDefault();
       loginError.textContent = '';
-
       if (!connectionOk) {
         const ok = await testConnection();
         if (!ok) return;
       }
-
       const email = loginEmail.value.trim();
       const password = loginPassword.value;
-
       if (!email || !password) {
         loginError.textContent = 'Preencha e-mail e senha.';
         loginStatus.textContent = 'Sessão bloqueada.';
         return;
       }
-
       try {
         loginBtn.disabled = true;
         loginBtn.textContent = 'Entrando...';
         loginStatus.textContent = 'Validando acesso...';
-
         const result = await requestLogin(email, password);
-
         setSession({
           token: result.token,
           email: result.email || email,
           expiresAt: result.expiresAt || null,
           loginAt: new Date().toISOString()
         });
-
         updateSessionUI();
         loginPassword.value = '';
         loginStatus.textContent = 'Sessão liberada nesta aba.';
         showToast('Login realizado com sucesso.');
         await handleManualRemoteLoad();
+        await loadDiary();
       } catch (error) {
         clearSession();
         updateSessionUI();
@@ -843,6 +844,52 @@
       loginError.textContent = '';
       loginStatus.textContent = connectionOk ? 'Conexão com o Web App confirmada.' : 'Sessão bloqueada.';
       showToast('Sessão encerrada.');
+    }
+
+    function getTodayISO() {
+      const d = new Date();
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    function updateDiaryDateLabel() {
+      diaryDateLabel.textContent = getTodayISO();
+    }
+
+    async function loadDiary() {
+      if (!isAuthenticated()) {
+        showToast('Faça login para acessar o diário.');
+        return;
+      }
+      const s = getSession();
+      const date = getTodayISO();
+      try {
+        const data = await apiGet('loadDiary', { token: s.token, date });
+        diaryContent.value = data.content || '';
+      } catch (error) {
+        showToast(error.message || 'Erro ao carregar o diário.');
+      }
+    }
+
+    async function saveDiary() {
+      if (!isAuthenticated()) {
+        showToast('Faça login para salvar o diário.');
+        return;
+      }
+      const s = getSession();
+      const date = getTodayISO();
+      try {
+        await apiPost('saveDiary', {
+          token: s.token,
+          date,
+          content: diaryContent.value || ''
+        });
+        showToast('Diário salvo com sucesso.');
+      } catch (error) {
+        showToast(error.message || 'Erro ao salvar o diário.');
+      }
     }
 
     addRowBtn.addEventListener('click', () => {
@@ -1045,6 +1092,8 @@
     saveRemoteBtn.addEventListener('click', handleManualRemoteSave);
     loadRemoteBtn.addEventListener('click', handleManualRemoteLoad);
     loginForm.addEventListener('submit', handleLoginSubmit);
+    saveDiaryBtn.addEventListener('click', saveDiary);
+    loadDiaryBtn.addEventListener('click', loadDiary);
     window.addEventListener('beforeunload', () => saveLocalData(true));
 
     async function initApp() {
@@ -1054,10 +1103,10 @@
       updateSelectionState();
       updateMoveButtons();
       updateThemeButtonLabel();
+      updateDiaryDateLabel();
       initRadioPlayer();
       updateSessionUI();
       await testConnection();
-
       if (isAuthenticated()) {
         try {
           const rows = await loadFromGoogleSheets();
@@ -1065,6 +1114,7 @@
             setRowsData(rows);
             saveLocalData(true);
           }
+          await loadDiary();
         } catch (error) {
           clearSession();
           updateSessionUI();
@@ -1075,7 +1125,6 @@
 
     initApp();
   </script>
-
   <script async src="https://app3.weatherwidget.org/js/?id=ww_a8f8b462aca40"></script>
 </body>
 </html>
