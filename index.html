@@ -172,9 +172,9 @@
   <div class="login-overlay" id="loginOverlay" aria-hidden="false">
     <section class="login-card">
       <div class="login-inner">
-        <div class="login-kicker">Área restrita</div>
-        <h2 class="login-title">Acesso do administrador</h2>
-        <p class="login-copy">Objetivos e Diário integrados com Google Sheets, login por sessão e salvamento híbrido local/online.</p>
+        <div class="login-kicker">Área Restrita</div>
+        <h2 class="login-title">Entre com usuário e senha</h2>
+        <p class="login-copy">Lista de Objetivos e Anotações Diárias</p>
         <form id="loginForm" novalidate>
           <div class="login-grid">
             <input class="login-input" id="loginEmail" type="email" placeholder="E-mail autorizado" autocomplete="username" required>
@@ -195,7 +195,7 @@
     <section class="hero">
       <article class="panel hero-main reveal">
         <div class="hero-head">
-          <h1>Objetivos</h1>
+          <h1>Lista de Objetivos</h1>
         </div>
         <div class="hero-media-grid">
           <section class="widget-card" aria-label="Previsão do tempo">
@@ -210,7 +210,7 @@
             <div class="radio-stack">
               <div class="sg-radio-player">
                 <div class="sg-radio-player__info">
-                  <div class="sg-radio-player__title">Piano Solo Radio</div>
+                  <div class="sg-radio-player__title">Piano Rádio</div>
                 </div>
                 <button class="sg-radio-player__btn" type="button" aria-label="Tocar rádio">
                   <span class="sg-radio-player__icon sg-radio-player__icon--play" aria-hidden="true"></span>
@@ -247,7 +247,7 @@
         <div class="action-card">
           <div>
             <div class="action-title">Painel privado</div>
-            <div class="action-copy">Objetivos com auto-save e Diário rico com histórico, busca, PDF e backup automático.</div>
+            <div class="action-copy">Definir texto pra este local</div>
           </div>
           <div class="button-row">
             <button class="btn-primary" id="saveRemoteBtn" type="button">Salvar online</button>
@@ -272,8 +272,8 @@
       <div class="sheet-frame">
         <div class="sheet-head">
           <div>
-            <div class="sheet-title" id="planilha-titulo">Planilha de execução doméstica</div>
-            <div class="sheet-subtitle">Objetivos mantidos com sincronização local e Google Sheets.</div>
+            <div class="sheet-title" id="planilha-titulo">Lista de Objetivos</div>
+            <div class="sheet-subtitle"></div>
           </div>
           <div class="top-auth">
             <div class="session-pill" id="sessionInfo">Não autenticado</div>
@@ -298,7 +298,7 @@
           </table>
         </div>
         <div class="sheet-foot">
-          <div class="tip">Os dados da tabela continuam funcionando como antes. As melhorias abaixo foram concentradas no Diário.</div>
+          <div class="tip">Definir texto neste local do diário</div>
           <div class="count" id="lineCountBottom">0 linhas</div>
         </div>
       </div>
@@ -309,7 +309,7 @@
         <div class="sheet-head">
           <div>
             <div class="sheet-title" id="diario-titulo">Diário</div>
-            <div class="sheet-subtitle">Editor rico com uma página por dia, busca textual, categorias, tags, PDF e backup automático sem duplicar registros.</div>
+            <div class="sheet-subtitle"></div>
           </div>
           <div class="top-auth">
             <div class="session-pill" id="diaryDateLabel">--/--/----</div>
