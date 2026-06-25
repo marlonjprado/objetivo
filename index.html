@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<!-- Versão: v16.2 -->
+<!-- Versão: v17.0 -->
 <html lang="pt-BR" data-theme="classic">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Objetivos — Área Privada</title>
+  <title>Objetivos + Diário — Área Privada</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--radius-xl:28px;--radius-lg:20px;--radius-md:14px;--radius-sm:10px;--max:1240px;--shadow:0 22px 70px rgba(65,47,32,.12);--shadow-soft:0 10px 30px rgba(65,47,32,.08);--transition:220ms ease}
+    :root{--radius-xl:28px;--radius-lg:20px;--radius-md:14px;--radius-sm:10px;--max:1280px;--shadow:0 22px 70px rgba(65,47,32,.12);--shadow-soft:0 10px 30px rgba(65,47,32,.08);--transition:220ms ease}
     html[data-theme="classic"]{--bg:#f4efe7;--bg-2:#ece3d6;--paper:rgba(255,251,246,.78);--paper-strong:rgba(255,255,255,.88);--ink:#241c17;--muted:#76695f;--line:rgba(72,52,38,.14);--accent:#91684a;--accent-deep:#5e412d;--accent-soft:rgba(145,104,74,.10);--success:#3d6b4e;--danger:#8d4d43;--grid-line:rgba(255,255,255,.12);--surface-border:rgba(255,255,255,.72);--surface-highlight:linear-gradient(135deg,rgba(255,255,255,.42),transparent 26%),linear-gradient(180deg,transparent,rgba(255,255,255,.18));--table-head:rgba(255,255,255,.58);--input-bg:rgba(255,255,255,.08);--input-bg-hover:rgba(255,255,255,.26);--input-bg-focus:rgba(255,255,255,.82);--pill-bg:linear-gradient(180deg,#fff,#efe3d6);--checkbox-bg:rgba(255,255,255,.72);--hero-bg:radial-gradient(circle at 12% 18%,rgba(217,192,166,.48),transparent 24%),radial-gradient(circle at 88% 10%,rgba(145,104,74,.10),transparent 20%),radial-gradient(circle at 80% 90%,rgba(145,104,74,.08),transparent 24%),linear-gradient(180deg,#faf6f0 0%,var(--bg) 52%,var(--bg-2) 100%);--mini-box-bg:rgba(255,255,255,.52);--mini-box-border:rgba(72,52,38,.08);--sheet-frame-bg:rgba(255,255,255,.42);--sheet-frame-border:rgba(72,52,38,.10);--badge-border:rgba(72,52,38,.10);--count-border:rgba(72,52,38,.10);--danger-soft:rgba(141,77,67,.08);--danger-border:rgba(141,77,67,.14);--selected-row:linear-gradient(180deg,rgba(141,77,67,.10),rgba(141,77,67,.06));--selected-outline:rgba(141,77,67,.18);--move-soft:rgba(61,107,78,.08);--move-border:rgba(61,107,78,.14);--toast-bg:rgba(36,28,23,.94);--widget-shell:rgba(255,255,255,.44);--widget-border:rgba(72,52,38,.10);--radio-bg:linear-gradient(180deg,rgba(255,255,255,.60),rgba(255,255,255,.36));--radio-border:rgba(72,52,38,.10);--radio-text:var(--ink);--radio-subtle:var(--muted);--radio-button-bg:linear-gradient(135deg,#f1d4aa,#c89a62);--radio-button-ink:#1b140f;--radio-button-shadow:0 10px 24px rgba(200,154,98,.28);--radio-range:#c89a62;--overlay:rgba(244,239,231,.74);--login-shell:rgba(255,255,255,.76);--login-border:rgba(72,52,38,.12)}
     html[data-theme="hitech"]{--bg:#d8e2ee;--bg-2:#c7d5e4;--paper:rgba(245,250,255,.66);--paper-strong:rgba(236,245,255,.82);--ink:#12202f;--muted:#516476;--line:rgba(27,73,117,.14);--accent:#2a7de1;--accent-deep:#1654a8;--accent-soft:rgba(42,125,225,.10);--success:#248a68;--danger:#c14c6f;--grid-line:rgba(255,255,255,.16);--surface-border:rgba(255,255,255,.68);--surface-highlight:linear-gradient(135deg,rgba(255,255,255,.38),transparent 26%),linear-gradient(180deg,transparent,rgba(255,255,255,.12));--table-head:rgba(238,246,255,.72);--input-bg:rgba(255,255,255,.16);--input-bg-hover:rgba(255,255,255,.34);--input-bg-focus:rgba(255,255,255,.94);--pill-bg:linear-gradient(180deg,#fff,#dcecff);--checkbox-bg:rgba(255,255,255,.9);--hero-bg:radial-gradient(circle at 14% 18%,rgba(77,163,255,.18),transparent 22%),radial-gradient(circle at 88% 12%,rgba(135,196,255,.26),transparent 20%),radial-gradient(circle at 78% 88%,rgba(88,183,255,.16),transparent 22%),linear-gradient(180deg,#eef5fb 0%,var(--bg) 48%,var(--bg-2) 100%);--shadow:0 26px 70px rgba(31,74,123,.12);--shadow-soft:0 12px 30px rgba(31,74,123,.09);--mini-box-bg:rgba(255,255,255,.42);--mini-box-border:rgba(42,125,225,.10);--sheet-frame-bg:rgba(247,250,255,.50);--sheet-frame-border:rgba(42,125,225,.10);--badge-border:rgba(42,125,225,.12);--count-border:rgba(42,125,225,.12);--danger-soft:rgba(193,76,111,.08);--danger-border:rgba(193,76,111,.16);--selected-row:linear-gradient(180deg,rgba(42,125,225,.10),rgba(42,125,225,.05));--selected-outline:rgba(42,125,225,.20);--move-soft:rgba(36,138,104,.08);--move-border:rgba(36,138,104,.16);--toast-bg:rgba(17,40,68,.94);--widget-shell:rgba(255,255,255,.40);--widget-border:rgba(42,125,225,.10);--radio-bg:linear-gradient(180deg,rgba(255,255,255,.52),rgba(255,255,255,.26));--radio-border:rgba(42,125,225,.12);--radio-text:var(--ink);--radio-subtle:var(--muted);--radio-button-bg:linear-gradient(135deg,#7bc1ff,#2a7de1);--radio-button-ink:#fff;--radio-button-shadow:0 10px 24px rgba(42,125,225,.24);--radio-range:#2a7de1;--overlay:rgba(216,226,238,.76);--login-shell:rgba(255,255,255,.74);--login-border:rgba(42,125,225,.12)}
     html[data-theme="hitech-dark"]{--bg:#0b1220;--bg-2:#111b2f;--paper:rgba(17,27,47,.78);--paper-strong:rgba(13,23,41,.92);--ink:#e6eef8;--muted:#8ea3bb;--line:rgba(93,145,201,.18);--accent:#57b7ff;--accent-deep:#1d7fd8;--accent-soft:rgba(87,183,255,.12);--success:#3bcf98;--danger:#ff7b93;--grid-line:rgba(255,255,255,.05);--surface-border:rgba(103,149,204,.12);--surface-highlight:linear-gradient(135deg,rgba(255,255,255,.06),transparent 26%),linear-gradient(180deg,transparent,rgba(255,255,255,.03));--table-head:rgba(18,30,52,.96);--input-bg:rgba(255,255,255,.04);--input-bg-hover:rgba(255,255,255,.08);--input-bg-focus:rgba(16,31,54,.98);--pill-bg:linear-gradient(180deg,#16253e,#0f1d33);--checkbox-bg:rgba(255,255,255,.03);--hero-bg:radial-gradient(circle at 12% 16%,rgba(87,183,255,.14),transparent 24%),radial-gradient(circle at 88% 10%,rgba(58,126,214,.18),transparent 22%),radial-gradient(circle at 80% 88%,rgba(72,219,251,.10),transparent 22%),linear-gradient(180deg,#0f1728 0%,var(--bg) 46%,var(--bg-2) 100%);--shadow:0 30px 80px rgba(0,0,0,.34);--shadow-soft:0 14px 34px rgba(0,0,0,.24);--mini-box-bg:rgba(255,255,255,.03);--mini-box-border:rgba(87,183,255,.12);--sheet-frame-bg:rgba(14,23,40,.74);--sheet-frame-border:rgba(87,183,255,.10);--badge-border:rgba(87,183,255,.12);--count-border:rgba(87,183,255,.12);--danger-soft:rgba(255,123,147,.08);--danger-border:rgba(255,123,147,.16);--selected-row:linear-gradient(180deg,rgba(87,183,255,.12),rgba(87,183,255,.05));--selected-outline:rgba(87,183,255,.24);--move-soft:rgba(59,207,152,.08);--move-border:rgba(59,207,152,.16);--toast-bg:rgba(10,18,33,.96);--widget-shell:rgba(255,255,255,.03);--widget-border:rgba(87,183,255,.10);--radio-bg:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));--radio-border:rgba(87,183,255,.12);--radio-text:var(--ink);--radio-subtle:var(--muted);--radio-button-bg:linear-gradient(135deg,#57b7ff,#1d7fd8);--radio-button-ink:#07111d;--radio-button-shadow:0 10px 24px rgba(29,127,216,.26);--radio-range:#57b7ff;--overlay:rgba(11,18,32,.78);--login-shell:rgba(16,25,44,.86);--login-border:rgba(87,183,255,.12)}
@@ -48,10 +48,10 @@
     .sg-radio-player__range{width:120px;accent-color:var(--radio-range)}
     .hero-side{padding:16px;display:grid;grid-template-rows:auto 1fr;gap:14px;min-height:320px}
     .mini-stat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-    .mini-box{background:var(--mini-box-bg);border:1px solid var(--mini-box-border);border-radius:18px;padding:15px;box-shadow:var(--shadow-soft);transition:background var(--transition),border-color var(--transition)}
+    .mini-box{background:var(--mini-box-bg);border:1px solid var(--mini-box-border);border-radius:18px;padding:15px;box-shadow:var(--shadow-soft)}
     .mini-label{color:var(--muted);font-size:.82rem;margin-bottom:8px}
     .mini-value{font-family:"Space Grotesk",sans-serif;font-size:1.7rem;line-height:1;letter-spacing:-.04em;font-weight:700}
-    .action-card{background:radial-gradient(circle at top right,var(--accent-soft),transparent 35%),var(--paper-strong);border:1px solid color-mix(in srgb,var(--surface-border) 80%,transparent);border-radius:22px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow-soft);transition:background var(--transition),border-color var(--transition)}
+    .action-card{background:radial-gradient(circle at top right,var(--accent-soft),transparent 35%),var(--paper-strong);border:1px solid color-mix(in srgb,var(--surface-border) 80%,transparent);border-radius:22px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow-soft)}
     .action-title{font-family:"Space Grotesk",sans-serif;font-size:1.2rem;line-height:1;margin-bottom:8px;letter-spacing:-.03em}
     .action-copy{color:var(--muted);line-height:1.65;font-size:.92rem;margin-bottom:16px}
     .button-row{display:flex;flex-wrap:wrap;gap:10px}
@@ -69,30 +69,30 @@
     .btn-move:hover{background:color-mix(in srgb,var(--success) 14%,transparent);transform:translateY(-2px)}
     .btn-danger:disabled,.btn-move:disabled{opacity:.45;cursor:not-allowed;transform:none}
     .sheet{padding:14px}
-    .sheet-frame{overflow:hidden;border-radius:24px;border:1px solid var(--sheet-frame-border);background:var(--sheet-frame-bg);transition:background var(--transition),border-color var(--transition)}
+    .sheet-frame{overflow:hidden;border-radius:24px;border:1px solid var(--sheet-frame-border);background:var(--sheet-frame-bg)}
     .sheet-head{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.42))}
     html[data-theme="hitech-dark"] .sheet-head{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01))}
     .sheet-title{font-family:"Space Grotesk",sans-serif;font-size:1.7rem;line-height:1;letter-spacing:-.04em;font-weight:700}
     .sheet-subtitle{color:var(--muted);font-size:.94rem;margin-top:6px}
     .table-wrap{overflow:auto}
     table{width:100%;min-width:1250px;border-collapse:collapse}
-    thead th{text-align:left;padding:15px 16px;font-size:.9rem;color:var(--ink);text-transform:uppercase;letter-spacing:.09em;border-bottom:1px solid var(--line);background:var(--table-head);position:sticky;top:0;z-index:2;transition:background var(--transition),border-color var(--transition)}
+    thead th{text-align:left;padding:15px 16px;font-size:.9rem;color:var(--ink);text-transform:uppercase;letter-spacing:.09em;border-bottom:1px solid var(--line);background:var(--table-head);position:sticky;top:0;z-index:2}
     tbody tr{transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
     tbody tr:hover{background:rgba(255,255,255,.30)}
     html[data-theme="hitech-dark"] tbody tr:hover{background:rgba(255,255,255,.03)}
     tbody tr.is-selected{background:var(--selected-row);box-shadow:inset 0 0 0 1px var(--selected-outline)}
-    tbody td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle;transition:border-color var(--transition)}
+    tbody td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
     .select-col{width:82px}.order-col{width:90px}.move-col{width:132px}.goal-col{width:540px}.date-col{width:170px}.status-col{width:180px}.notes-col{width:280px}.remove-col{width:110px}
     .select-wrap{display:flex;align-items:center;justify-content:center}
     .row-check{appearance:none;-webkit-appearance:none;width:22px;height:22px;border-radius:7px;border:1.5px solid color-mix(in srgb,var(--accent) 30%,var(--ink) 20%);background:var(--checkbox-bg);cursor:pointer;position:relative;transition:background .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease}
     .row-check:hover{transform:scale(1.05);border-color:var(--accent)}
     .row-check:checked{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
     .row-check:checked::after{content:"";position:absolute;left:7px;top:3px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
-    .order-pill{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 12px;border-radius:999px;background:var(--pill-bg);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.25);font-weight:700;transition:background var(--transition),border-color var(--transition)}
-    .cell-input,.cell-select,.login-input,.diary-search-input{width:100%;border:1px solid transparent;background:var(--input-bg);color:var(--ink);font:inherit;padding:12px 13px;border-radius:12px;outline:none;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease,transform .18s ease,color .18s ease}
-    .cell-input::placeholder,.login-input::placeholder,.diary-search-input::placeholder{color:color-mix(in srgb,var(--muted) 80%,white 20%)}
-    .cell-input:hover,.cell-select:hover,.login-input:hover,.diary-search-input:hover{background:var(--input-bg-hover)}
-    .cell-input:focus,.cell-select:focus,.login-input:focus,.diary-search-input:focus{border-color:color-mix(in srgb,var(--accent) 34%,transparent);background:var(--input-bg-focus);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent);transform:translateY(-1px)}
+    .order-pill{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 12px;border-radius:999px;background:var(--pill-bg);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.25);font-weight:700}
+    .cell-input,.cell-select,.login-input,.diary-search-input,.diary-meta-input,.diary-meta-select{width:100%;border:1px solid transparent;background:var(--input-bg);color:var(--ink);font:inherit;padding:12px 13px;border-radius:12px;outline:none;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease,transform .18s ease,color .18s ease}
+    .cell-input::placeholder,.login-input::placeholder,.diary-search-input::placeholder,.diary-meta-input::placeholder{color:color-mix(in srgb,var(--muted) 80%,white 20%)}
+    .cell-input:hover,.cell-select:hover,.login-input:hover,.diary-search-input:hover,.diary-meta-input:hover,.diary-meta-select:hover{background:var(--input-bg-hover)}
+    .cell-input:focus,.cell-select:focus,.login-input:focus,.diary-search-input:focus,.diary-meta-input:focus,.diary-meta-select:focus{border-color:color-mix(in srgb,var(--accent) 34%,transparent);background:var(--input-bg-focus);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent);transform:translateY(-1px)}
     .remove-btn,.move-btn{width:44px;height:44px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.16);padding:0}
     .remove-btn{background:var(--danger-soft);color:var(--danger);border:1px solid var(--danger-border)}
     .remove-btn:hover{background:color-mix(in srgb,var(--danger) 14%,transparent);transform:translateY(-2px) scale(1.03)}
@@ -103,9 +103,9 @@
     .remove-btn svg,.move-btn svg{width:18px;height:18px}
     .sheet-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px 18px;color:var(--muted);font-size:.9rem}
     .tip{max-width:70ch;line-height:1.7}
-    .count{padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.62);border:1px solid var(--count-border);color:var(--ink);font-size:.88rem;transition:background var(--transition),border-color var(--transition)}
+    .count{padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.62);border:1px solid var(--count-border);color:var(--ink);font-size:.88rem}
     html[data-theme="hitech-dark"] .count{background:rgba(255,255,255,.04)}
-    .toast{position:fixed;right:18px;bottom:18px;padding:14px 16px;border-radius:16px;background:var(--toast-bg);color:#fff;box-shadow:0 18px 40px rgba(0,0,0,.18);font-size:.92rem;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .22s ease,transform .22s ease,background .22s ease;z-index:100;max-width:min(92vw,360px)}
+    .toast{position:fixed;right:18px;bottom:18px;padding:14px 16px;border-radius:16px;background:var(--toast-bg);color:#fff;box-shadow:0 18px 40px rgba(0,0,0,.18);font-size:.92rem;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .22s ease,transform .22s ease;z-index:100;max-width:min(92vw,360px)}
     .toast.show{opacity:1;transform:translateY(0)}
     .hidden-copy,.hidden-file{position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none}
     .reveal{opacity:0;transform:translateY(18px)}
@@ -128,36 +128,42 @@
     .logout-btn{padding:10px 14px;border-radius:999px}
 
     .diary-panel{margin-top:18px}
-    .diary-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:16px;padding:16px}
-    .diary-sidebar{display:grid;gap:12px;align-content:start}
+    .diary-layout{display:grid;grid-template-columns:310px minmax(0,1fr);gap:16px;padding:16px}
+    .diary-sidebar,.diary-main{display:grid;gap:12px;align-content:start}
     .diary-box{background:var(--paper-strong);border:1px solid color-mix(in srgb,var(--surface-border) 80%,transparent);border-radius:20px;padding:14px;box-shadow:var(--shadow-soft)}
     html[data-theme="hitech-dark"] .diary-box{background:rgba(255,255,255,.03)}
-    .diary-search-wrap{display:grid;gap:10px}
-    .diary-list{display:grid;gap:8px;max-height:520px;overflow:auto;padding-right:4px}
-    .diary-date-item{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:12px 14px;border-radius:14px;background:var(--input-bg);color:var(--ink);border:1px solid transparent}
+    .diary-list{display:grid;gap:8px;max-height:560px;overflow:auto;padding-right:4px}
+    .diary-date-item{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;width:100%;text-align:left;padding:12px 14px;border-radius:14px;background:var(--input-bg);color:var(--ink);border:1px solid transparent}
     .diary-date-item:hover{background:var(--input-bg-hover)}
     .diary-date-item.active{background:var(--selected-row);border-color:var(--selected-outline)}
     .diary-date-main{display:grid;gap:2px}
     .diary-date-label{font-weight:800}
-    .diary-date-sub{font-size:.82rem;color:var(--muted)}
+    .diary-date-sub{font-size:.8rem;color:var(--muted)}
+    .diary-date-tags{font-size:.75rem;color:var(--accent)}
     .diary-empty{color:var(--muted);font-size:.92rem;padding:8px 2px}
-    .diary-main{display:grid;gap:12px}
-    .diary-meta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
-    .diary-status{font-size:.9rem;color:var(--muted)}
+    .diary-grid-top{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:10px}
     .diary-toolbar{display:flex;flex-wrap:wrap;gap:8px}
     .diary-toolbar button{padding:10px 12px;border-radius:12px;background:var(--paper-strong);color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow-soft)}
     .diary-toolbar button:hover{transform:translateY(-1px)}
-    .diary-editor{min-height:360px;max-height:520px;overflow-y:auto;padding:16px;border-radius:16px;background:var(--input-bg);border:1px solid var(--line);color:var(--ink);line-height:1.7;outline:none}
+    .diary-editor-shell{position:relative}
+    .diary-editor{min-height:380px;max-height:560px;overflow-y:auto;padding:18px;border-radius:18px;background:linear-gradient(180deg,color-mix(in srgb,var(--paper-strong) 88%,transparent),color-mix(in srgb,var(--input-bg) 92%,transparent));border:1px solid var(--line);color:var(--ink);line-height:1.78;outline:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.22)}
     .diary-editor:focus{border-color:color-mix(in srgb,var(--accent) 34%,transparent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
-    .diary-editor p{margin:.4em 0}
+    .diary-editor p{margin:.5em 0}
+    .diary-meta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+    .diary-status{font-size:.9rem;color:var(--muted)}
     .autosave-dot{display:inline-flex;align-items:center;gap:8px}
     .autosave-dot::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--muted);opacity:.5}
     .autosave-dot.is-saving::before{background:var(--accent)}
     .autosave-dot.is-saved::before{background:var(--success);opacity:1}
     .autosave-dot.is-error::before{background:var(--danger);opacity:1}
-
+    .diary-chip-row{display:flex;flex-wrap:wrap;gap:8px}
+    .diary-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border-radius:999px;background:var(--accent-soft);color:var(--ink);border:1px solid color-mix(in srgb,var(--accent) 18%,transparent);font-size:.82rem}
+    .diary-search-stack{display:grid;gap:10px}
+    .mini-help{font-size:.84rem;color:var(--muted);line-height:1.55}
+    .backup-note{font-size:.82rem;color:var(--muted)}
+    .diary-word-highlight{background:color-mix(in srgb,var(--accent) 18%,transparent);padding:0 .15em;border-radius:.25em}
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-    @media (max-width:1080px){.hero{grid-template-columns:1fr;gap:16px}.sheet-head{grid-template-columns:1fr}.top-auth{justify-self:start}.diary-layout{grid-template-columns:1fr}}
+    @media (max-width:1080px){.hero{grid-template-columns:1fr;gap:16px}.sheet-head{grid-template-columns:1fr}.top-auth{justify-self:start}.diary-layout{grid-template-columns:1fr}.diary-grid-top{grid-template-columns:1fr}}
     @media (max-width:720px){.sg-radio-player{flex-wrap:wrap;gap:12px}.sg-radio-player__volume{width:100%;min-width:0}.sg-radio-player__range{width:100%}}
     @media (max-width:640px){.shell{width:min(calc(100% - 18px),var(--max));padding-top:14px}.hero-main,.hero-side{padding:16px}h1{max-width:10ch;font-size:clamp(2rem,9vw,3rem)}.button-row button{flex:1 1 100%}.mini-stat{grid-template-columns:1fr}.login-card{padding:20px;border-radius:24px}.diary-toolbar button{flex:1 1 auto}}
   </style>
@@ -168,7 +174,7 @@
       <div class="login-inner">
         <div class="login-kicker">Área restrita</div>
         <h2 class="login-title">Acesso do administrador</h2>
-        <p class="login-copy">Agora com login via GET para maior compatibilidade entre GitHub Pages e Web App do Apps Script.</p>
+        <p class="login-copy">Objetivos e Diário integrados com Google Sheets, login por sessão e salvamento híbrido local/online.</p>
         <form id="loginForm" novalidate>
           <div class="login-grid">
             <input class="login-input" id="loginEmail" type="email" placeholder="E-mail autorizado" autocomplete="username" required>
@@ -241,7 +247,7 @@
         <div class="action-card">
           <div>
             <div class="action-title">Painel privado</div>
-            <div class="action-copy">Sessão por aba com login via GET, load via GET, logout via GET e salvamento online via POST.</div>
+            <div class="action-copy">Objetivos com auto-save e Diário rico com histórico, busca, PDF e backup automático.</div>
           </div>
           <div class="button-row">
             <button class="btn-primary" id="saveRemoteBtn" type="button">Salvar online</button>
@@ -267,7 +273,7 @@
         <div class="sheet-head">
           <div>
             <div class="sheet-title" id="planilha-titulo">Planilha de execução doméstica</div>
-            <div class="sheet-subtitle">Versão revisada para melhor compatibilidade de rede entre HTML e Apps Script.</div>
+            <div class="sheet-subtitle">Objetivos mantidos com sincronização local e Google Sheets.</div>
           </div>
           <div class="top-auth">
             <div class="session-pill" id="sessionInfo">Não autenticado</div>
@@ -292,7 +298,7 @@
           </table>
         </div>
         <div class="sheet-foot">
-          <div class="tip">Se houver erro de conexão, a tela de login mostrará uma mensagem mais precisa antes do acesso.</div>
+          <div class="tip">Os dados da tabela continuam funcionando como antes. As melhorias abaixo foram concentradas no Diário.</div>
           <div class="count" id="lineCountBottom">0 linhas</div>
         </div>
       </div>
@@ -303,7 +309,7 @@
         <div class="sheet-head">
           <div>
             <div class="sheet-title" id="diario-titulo">Diário</div>
-            <div class="sheet-subtitle">Uma página por dia, com editor rico, histórico, busca, auto-save e navegação rápida.</div>
+            <div class="sheet-subtitle">Editor rico com uma página por dia, busca textual, categorias, tags, PDF e backup automático sem duplicar registros.</div>
           </div>
           <div class="top-auth">
             <div class="session-pill" id="diaryDateLabel">--/--/----</div>
@@ -314,29 +320,53 @@
         <div class="diary-layout">
           <aside class="diary-sidebar">
             <section class="diary-box">
-              <div class="diary-search-wrap">
-                <input id="diarySearchInput" class="diary-search-input" type="search" placeholder="Buscar por data (dd/mm/aaaa ou aaaa-mm-dd)">
+              <div class="diary-search-stack">
+                <input id="diarySearchInput" class="diary-search-input" type="search" placeholder="Buscar por data, título, palavra, tag ou categoria">
                 <div class="button-row">
                   <button class="btn-secondary" id="todayDiaryBtn" type="button">Hoje</button>
                   <button class="btn-secondary" id="prevDiaryBtn" type="button">← Anterior</button>
                   <button class="btn-secondary" id="nextDiaryBtn" type="button">Próximo →</button>
                 </div>
+                <div class="mini-help">Dica: você pode pesquisar por texto do histórico, data, título, categoria ou tags.</div>
               </div>
             </section>
 
             <section class="diary-box">
-              <div class="action-title" style="font-size:1rem;margin-bottom:10px;">Datas salvas</div>
+              <div class="action-title" style="font-size:1rem;margin-bottom:10px;">Histórico do diário</div>
               <div class="diary-list" id="diaryDatesList"></div>
-              <div class="diary-empty" id="diaryDatesEmpty">Nenhuma data encontrada.</div>
+              <div class="diary-empty" id="diaryDatesEmpty">Nenhum registro encontrado.</div>
+            </section>
+
+            <section class="diary-box">
+              <div class="action-title" style="font-size:1rem;margin-bottom:10px;">Backup automático</div>
+              <div class="backup-note" id="diaryBackupInfo">Aguardando primeiro salvamento...</div>
             </section>
           </aside>
 
           <section class="diary-main">
+            <div class="diary-grid-top">
+              <input id="diaryTitle" class="diary-meta-input" type="text" placeholder="Título do dia (opcional)">
+              <select id="diaryCategory" class="diary-meta-select">
+                <option value="">Categoria</option>
+                <option value="Pessoal">Pessoal</option>
+                <option value="Trabalho">Trabalho</option>
+                <option value="Saúde">Saúde</option>
+                <option value="Estudos">Estudos</option>
+                <option value="Família">Família</option>
+                <option value="Financeiro">Financeiro</option>
+                <option value="Espiritual">Espiritual</option>
+                <option value="Outros">Outros</option>
+              </select>
+              <input id="diaryTags" class="diary-meta-input" type="text" placeholder="Tags separadas por vírgula">
+            </div>
+
+            <div class="diary-chip-row" id="diaryTagPreview"></div>
+
             <div class="diary-meta-row">
-              <input id="diaryTitle" class="cell-input" type="text" placeholder="Título do dia (opcional)">
+              <div class="diary-status autosave-dot" id="diaryAutoSaveStatus">Sem alterações</div>
               <div class="top-auth">
-                <div class="diary-status autosave-dot" id="diaryAutoSaveStatus">Sem alterações</div>
                 <button class="btn-secondary" id="loadDiaryBtn" type="button">Carregar</button>
+                <button class="btn-secondary" id="diaryPdfBtn" type="button">PDF do Diário</button>
                 <button class="btn-primary" id="saveDiaryBtn" type="button">Salvar</button>
               </div>
             </div>
@@ -347,13 +377,15 @@
               <button type="button" data-cmd="underline" title="Sublinhado"><u>U</u></button>
               <button type="button" data-cmd="insertUnorderedList" title="Lista">• Lista</button>
               <button type="button" data-cmd="insertOrderedList" title="Lista numerada">1. Lista</button>
-              <button type="button" data-cmd="justifyLeft" title="Alinhar à esquerda">Esq.</button>
-              <button type="button" data-cmd="justifyCenter" title="Centralizar">Centro</button>
-              <button type="button" data-cmd="justifyRight" title="Alinhar à direita">Dir.</button>
-              <button type="button" data-cmd="removeFormat" title="Limpar formatação">Limpar</button>
+              <button type="button" data-cmd="justifyLeft" title="Esquerda">Esq.</button>
+              <button type="button" data-cmd="justifyCenter" title="Centro">Centro</button>
+              <button type="button" data-cmd="justifyRight" title="Direita">Dir.</button>
+              <button type="button" data-cmd="removeFormat" title="Limpar">Limpar</button>
             </div>
 
-            <div id="diaryEditor" class="diary-editor" contenteditable="true" spellcheck="true"></div>
+            <div class="diary-editor-shell">
+              <div id="diaryEditor" class="diary-editor" contenteditable="true" spellcheck="true"></div>
+            </div>
           </section>
         </div>
       </div>
@@ -369,7 +401,8 @@
     const THEME_KEY = 'objetivos_theme_preference_v2';
     const SESSION_KEY = 'objetivos_admin_session_v15';
     const THEMES = ['classic', 'hitech', 'hitech-dark'];
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzz4WOlbRDan_TYJ7SXPL72KEu8gVIyHAmBOBMXvIm9wcQNqhQqIu3WYZrJJZ4EBWmV6Q/exec';
+
+    const GOOGLE_SCRIPT_URL = 'COLE_AQUI_O_LINK_DO_WEB_APP_ATUALIZADO';
 
     const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -418,10 +451,14 @@
     const toast = document.getElementById('toast');
 
     const diaryTitle = document.getElementById('diaryTitle');
+    const diaryCategory = document.getElementById('diaryCategory');
+    const diaryTags = document.getElementById('diaryTags');
+    const diaryTagPreview = document.getElementById('diaryTagPreview');
     const diaryEditor = document.getElementById('diaryEditor');
     const diaryToolbar = document.getElementById('diaryToolbar');
     const saveDiaryBtn = document.getElementById('saveDiaryBtn');
     const loadDiaryBtn = document.getElementById('loadDiaryBtn');
+    const diaryPdfBtn = document.getElementById('diaryPdfBtn');
     const prevDiaryBtn = document.getElementById('prevDiaryBtn');
     const nextDiaryBtn = document.getElementById('nextDiaryBtn');
     const todayDiaryBtn = document.getElementById('todayDiaryBtn');
@@ -431,6 +468,7 @@
     const diaryDatesEmpty = document.getElementById('diaryDatesEmpty');
     const diarySearchInput = document.getElementById('diarySearchInput');
     const diaryAutoSaveStatus = document.getElementById('diaryAutoSaveStatus');
+    const diaryBackupInfo = document.getElementById('diaryBackupInfo');
 
     let saveTimer = null;
     let autoSaveRemoteTimer = null;
@@ -440,6 +478,7 @@
     let diaryAutoSaveTimer = null;
     let diaryDatesCache = [];
     let diaryDirty = false;
+    let lastBackupAt = '';
 
     function showToast(message) {
       toast.textContent = message;
@@ -449,18 +488,11 @@
     }
 
     function formatNow(date = new Date()) {
-      return date.toLocaleString('pt-BR', {
-        day: '2-digit', month: '2-digit', year: 'numeric',
-        hour: '2-digit', minute: '2-digit'
-      });
+      return date.toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
     }
 
     function escapeHtml(text) {
-      return String(text)
-        .replaceAll('&', '&amp;')
-        .replaceAll('"', '&quot;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;');
+      return String(text).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
     }
 
     function getCurrentTheme() {
@@ -554,28 +586,15 @@
 
     function setRowsData(rows) {
       tableBody.innerHTML = '';
-      if (Array.isArray(rows) && rows.length) {
-        rows.forEach(item => tableBody.appendChild(createRow(item)));
-      } else {
-        createDefaultRows();
-      }
-      updateOrderNumbers();
-      updateSelectionState();
-      updateMoveButtons();
+      if (Array.isArray(rows) && rows.length) rows.forEach(item => tableBody.appendChild(createRow(item)));
+      else createDefaultRows();
+      updateOrderNumbers(); updateSelectionState(); updateMoveButtons();
     }
 
-    function savePayload(payload) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-    }
+    function savePayload(payload) { localStorage.setItem(STORAGE_KEY, JSON.stringify(payload)); }
 
     function saveLocalData(immediate = false) {
-      const persist = () => {
-        savePayload({
-          version: 15,
-          updatedAt: new Date().toISOString(),
-          rows: getRowsData()
-        });
-      };
+      const persist = () => savePayload({ version: 15, updatedAt: new Date().toISOString(), rows: getRowsData() });
       if (immediate) return persist();
       clearTimeout(saveTimer);
       saveTimer = setTimeout(persist, 250);
@@ -583,12 +602,9 @@
 
     function createDefaultRows() {
       tableBody.innerHTML = '';
-      Array.from({ length: 5 }, () => ({
-        objetivo: '', prazo: '', status: 'Pendente', observacoes: ''
-      })).forEach(item => tableBody.appendChild(createRow(item)));
-      updateOrderNumbers();
-      updateSelectionState();
-      updateMoveButtons();
+      Array.from({ length: 5 }, () => ({ objetivo:'', prazo:'', status:'Pendente', observacoes:'' }))
+      .forEach(item => tableBody.appendChild(createRow(item)));
+      updateOrderNumbers(); updateSelectionState(); updateMoveButtons();
     }
 
     function loadLocalData() {
@@ -598,14 +614,10 @@
         const data = JSON.parse(raw);
         if (Array.isArray(data.rows) && data.rows.length) return setRowsData(data.rows);
         createDefaultRows();
-      } catch {
-        createDefaultRows();
-      }
+      } catch { createDefaultRows(); }
     }
 
-    function loadTheme() {
-      applyTheme(localStorage.getItem(THEME_KEY) || 'classic', false);
-    }
+    function loadTheme() { applyTheme(localStorage.getItem(THEME_KEY) || 'classic', false); }
 
     function updateOrderNumbers() {
       [...tableBody.querySelectorAll('tr')].forEach((row, index) => {
@@ -621,14 +633,8 @@
       lineCountBottom.textContent = `${count} ${count === 1 ? 'linha' : 'linhas'}`;
     }
 
-    function getSelectedRows() {
-      return [...tableBody.querySelectorAll('.row-check:checked')].map(c => c.closest('tr')).filter(Boolean);
-    }
-
-    function getSingleSelectedRow() {
-      const rows = getSelectedRows();
-      return rows.length === 1 ? rows[0] : null;
-    }
+    function getSelectedRows() { return [...tableBody.querySelectorAll('.row-check:checked')].map(c => c.closest('tr')).filter(Boolean); }
+    function getSingleSelectedRow() { const rows = getSelectedRows(); return rows.length === 1 ? rows[0] : null; }
 
     function updateSelectionState() {
       const checks = [...tableBody.querySelectorAll('.row-check')];
@@ -658,11 +664,8 @@
       rows.forEach((row, index) => row.animate([{opacity:1,transform:'translateX(0)'},{opacity:0,transform:'translateX(10px)'}],{duration:220,easing:'ease-in',delay:index*40,fill:'forwards'}));
       setTimeout(() => {
         rows.forEach(r => r.remove());
-        updateOrderNumbers();
-        updateSelectionState();
-        updateMoveButtons();
-        saveLocalData(true);
-        scheduleRemoteAutoSave();
+        updateOrderNumbers(); updateSelectionState(); updateMoveButtons();
+        saveLocalData(true); scheduleRemoteAutoSave();
         showToast(`${rows.length} ${rows.length === 1 ? 'linha excluída' : 'linhas excluídas'}.`);
       }, 260 + (rows.length - 1) * 40);
     }
@@ -672,8 +675,7 @@
       const prev = row.previousElementSibling;
       if (!prev) return showToast('A linha já está no topo.');
       tableBody.insertBefore(row, prev);
-      updateOrderNumbers(); updateSelectionState(); updateMoveButtons();
-      saveLocalData(true); scheduleRemoteAutoSave(); showToast('Linha movida para cima.');
+      updateOrderNumbers(); updateSelectionState(); updateMoveButtons(); saveLocalData(true); scheduleRemoteAutoSave(); showToast('Linha movida para cima.');
     }
 
     function moveRowDown(row) {
@@ -681,8 +683,7 @@
       const next = row.nextElementSibling;
       if (!next) return showToast('A linha já está na última posição.');
       tableBody.insertBefore(next, row);
-      updateOrderNumbers(); updateSelectionState(); updateMoveButtons();
-      saveLocalData(true); scheduleRemoteAutoSave(); showToast('Linha movida para baixo.');
+      updateOrderNumbers(); updateSelectionState(); updateMoveButtons(); saveLocalData(true); scheduleRemoteAutoSave(); showToast('Linha movida para baixo.');
     }
 
     function clearAllData() {
@@ -690,30 +691,17 @@
       localStorage.removeItem(STORAGE_KEY);
       createDefaultRows();
       saveLocalData(true);
-      showToast('Todos os dados foram limpos localmente.');
+      showToast('Todos os dados da tabela foram limpos localmente.');
     }
 
     function getSession() {
-      try {
-        const raw = sessionStorage.getItem(SESSION_KEY);
-        return raw ? JSON.parse(raw) : null;
-      } catch {
-        return null;
-      }
+      try { const raw = sessionStorage.getItem(SESSION_KEY); return raw ? JSON.parse(raw) : null; }
+      catch { return null; }
     }
 
-    function setSession(session) {
-      sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
-    }
-
-    function clearSession() {
-      sessionStorage.removeItem(SESSION_KEY);
-    }
-
-    function isAuthenticated() {
-      const s = getSession();
-      return !!(s && s.token && s.email);
-    }
+    function setSession(session) { sessionStorage.setItem(SESSION_KEY, JSON.stringify(session)); }
+    function clearSession() { sessionStorage.removeItem(SESSION_KEY); }
+    function isAuthenticated() { const s = getSession(); return !!(s && s.token && s.email); }
 
     function updateSessionUI() {
       if (isAuthenticated()) {
@@ -740,24 +728,14 @@
       });
       let response;
       try {
-        response = await fetch(url.toString(), {
-          method: 'GET',
-          cache: 'no-store',
-          redirect: 'follow'
-        });
+        response = await fetch(url.toString(), { method:'GET', cache:'no-store', redirect:'follow' });
       } catch {
         throw new Error('Falha de rede ao acessar o Web App.');
       }
       const text = await response.text();
       let data = {};
-      try {
-        data = JSON.parse(text);
-      } catch {
-        throw new Error('Resposta inválida do Web App.');
-      }
-      if (!response.ok || data.success === false) {
-        throw new Error(data.error || 'Erro na requisição GET.');
-      }
+      try { data = JSON.parse(text); } catch { throw new Error('Resposta inválida do Web App.'); }
+      if (!response.ok || data.success === false) throw new Error(data.error || 'Erro na requisição GET.');
       return data;
     }
 
@@ -767,24 +745,18 @@
       let response;
       try {
         response = await fetch(url.toString(), {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          method:'POST',
+          headers:{ 'Content-Type':'text/plain;charset=utf-8' },
           body: JSON.stringify(payload),
-          redirect: 'follow'
+          redirect:'follow'
         });
       } catch {
         throw new Error('Falha de rede ao salvar no Web App.');
       }
       const text = await response.text();
       let data = {};
-      try {
-        data = JSON.parse(text);
-      } catch {
-        throw new Error('Resposta inválida do Web App.');
-      }
-      if (!response.ok || data.success === false) {
-        throw new Error(data.error || 'Erro na requisição POST.');
-      }
+      try { data = JSON.parse(text); } catch { throw new Error('Resposta inválida do Web App.'); }
+      if (!response.ok || data.success === false) throw new Error(data.error || 'Erro na requisição POST.');
       return data;
     }
 
@@ -802,9 +774,7 @@
       }
     }
 
-    async function requestLogin(email, password) {
-      return apiGet('login', { email, password });
-    }
+    async function requestLogin(email, password) { return apiGet('login', { email, password }); }
 
     async function loadFromGoogleSheets() {
       const s = getSession();
@@ -853,10 +823,7 @@
         sessionInfo.textContent = `Sessão ativa • carregado online em ${formatNow()}`;
         showToast('Dados carregados do Google Sheets.');
       } catch (error) {
-        if ((error.message || '').includes('Sessão')) {
-          clearSession();
-          updateSessionUI();
-        }
+        if ((error.message || '').includes('Sessão')) { clearSession(); updateSessionUI(); }
         showToast(error.message || 'Erro ao carregar online.');
       } finally {
         loadRemoteBtn.disabled = false;
@@ -871,9 +838,7 @@
         try {
           await saveToGoogleSheets(getRowsData());
           sessionInfo.textContent = `Sessão ativa • auto save em ${formatNow()}`;
-        } catch (error) {
-          console.error(error);
-        }
+        } catch (error) { console.error(error); }
       }, 1400);
     }
 
@@ -896,12 +861,7 @@
         loginBtn.textContent = 'Entrando...';
         loginStatus.textContent = 'Validando acesso...';
         const result = await requestLogin(email, password);
-        setSession({
-          token: result.token,
-          email: result.email || email,
-          expiresAt: result.expiresAt || null,
-          loginAt: new Date().toISOString()
-        });
+        setSession({ token: result.token, email: result.email || email, expiresAt: result.expiresAt || null, loginAt: new Date().toISOString() });
         updateSessionUI();
         loginPassword.value = '';
         loginStatus.textContent = 'Sessão liberada nesta aba.';
@@ -909,8 +869,7 @@
         await handleManualRemoteLoad();
         await diaryBootstrapAfterAuth();
       } catch (error) {
-        clearSession();
-        updateSessionUI();
+        clearSession(); updateSessionUI();
         loginError.textContent = error.message || 'Falha no login.';
         loginStatus.textContent = 'Sessão bloqueada.';
       } finally {
@@ -932,59 +891,97 @@
 
     function getTodayISO() {
       const d = new Date();
-      const year = d.getFullYear();
-      const month = String(d.getMonth() + 1).padStart(2, '0');
-      const day = String(d.getDate()).padStart(2, '0');
-      return `${year}-${month}-${day}`;
+      return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    }
+
+    function normalizeDateInput(value) {
+      const v = String(value || '').trim();
+      if (!v) return '';
+      if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
+      if (/^\d{2}\/\d{2}\/\d{4}$/.test(v)) {
+        const [d,m,y] = v.split('/');
+        return `${y}-${m}-${d}`;
+      }
+      const parsed = new Date(v);
+      if (!isNaN(parsed.getTime())) {
+        return `${parsed.getFullYear()}-${String(parsed.getMonth()+1).padStart(2,'0')}-${String(parsed.getDate()).padStart(2,'0')}`;
+      }
+      return '';
     }
 
     function formatISODate(iso) {
-      if (!iso || !iso.includes('-')) return iso || '';
-      const [y, m, d] = iso.split('-');
+      const normalized = normalizeDateInput(iso);
+      if (!normalized) return iso || '';
+      const [y,m,d] = normalized.split('-');
       return `${d}/${m}/${y}`;
     }
 
     function shiftDateISO(iso, deltaDays) {
-      const d = new Date(`${iso}T00:00:00`);
+      const normalized = normalizeDateInput(iso) || getTodayISO();
+      const d = new Date(`${normalized}T00:00:00`);
       d.setDate(d.getDate() + deltaDays);
-      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
     }
 
-    function updateDiaryDateLabel() {
-      diaryDateLabel.textContent = formatISODate(currentDiaryDate);
-    }
+    function updateDiaryDateLabel() { diaryDateLabel.textContent = formatISODate(currentDiaryDate); }
 
     function setDiaryStatus(text, state = '') {
       diaryAutoSaveStatus.textContent = text;
-      diaryAutoSaveStatus.classList.remove('is-saving', 'is-saved', 'is-error');
+      diaryAutoSaveStatus.classList.remove('is-saving','is-saved','is-error');
       if (state) diaryAutoSaveStatus.classList.add(state);
     }
 
     function setDiaryUpdatedInfo(updatedAt) {
-      diaryUpdatedInfo.textContent = updatedAt ? `Última edição: ${formatNow(new Date(updatedAt))}` : 'Última edição: —';
+      if (!updatedAt) {
+        diaryUpdatedInfo.textContent = 'Última edição: —';
+        return;
+      }
+      const dt = new Date(updatedAt);
+      diaryUpdatedInfo.textContent = isNaN(dt.getTime()) ? 'Última edição: —' : `Última edição: ${formatNow(dt)}`;
     }
 
-    function getDiaryLocalKey(date) {
-      return `diary_v16_${date}`;
+    function updateBackupInfo(text) { diaryBackupInfo.textContent = text; }
+
+    function parseTags(value) {
+      return String(value || '').split(',').map(item => item.trim()).filter(Boolean);
     }
 
-    function getDiaryEditorContent() {
-      return diaryEditor.innerHTML || '';
+    function renderTagPreview() {
+      const tags = parseTags(diaryTags.value);
+      diaryTagPreview.innerHTML = '';
+      tags.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'diary-chip';
+        span.textContent = `#${tag}`;
+        diaryTagPreview.appendChild(span);
+      });
+      if (diaryCategory.value) {
+        const span = document.createElement('span');
+        span.className = 'diary-chip';
+        span.textContent = `Categoria: ${diaryCategory.value}`;
+        diaryTagPreview.prepend(span);
+      }
     }
 
-    function setDiaryEditorContent(html) {
-      diaryEditor.innerHTML = html || '';
-      if (!diaryEditor.innerHTML.trim()) diaryEditor.innerHTML = '<p></p>';
+    function getDiaryLocalKey(date) { return `diary_v17_${normalizeDateInput(date)}`; }
+
+    function getDiaryLocalPayload(date = currentDiaryDate) {
+      return {
+        date: normalizeDateInput(date),
+        title: diaryTitle.value || '',
+        category: diaryCategory.value || '',
+        tags: diaryTags.value || '',
+        contentHtml: diaryEditor.innerHTML || '',
+        plainText: (diaryEditor.textContent || '').trim(),
+        updatedAt: new Date().toISOString()
+      };
     }
 
     function saveDiaryLocal(date = currentDiaryDate) {
-      const payload = {
-        date,
-        title: diaryTitle.value || '',
-        contentHtml: getDiaryEditorContent(),
-        updatedAt: new Date().toISOString()
-      };
+      const payload = getDiaryLocalPayload(date);
       localStorage.setItem(getDiaryLocalKey(date), JSON.stringify(payload));
+      lastBackupAt = payload.updatedAt;
+      updateBackupInfo(`Último backup local: ${formatNow(new Date(lastBackupAt))}`);
       return payload;
     }
 
@@ -992,45 +989,53 @@
       try {
         const raw = localStorage.getItem(getDiaryLocalKey(date));
         return raw ? JSON.parse(raw) : null;
-      } catch {
-        return null;
-      }
+      } catch { return null; }
     }
 
-    function normalizeSearchToISO(value) {
-      const v = String(value || '').trim();
-      if (!v) return '';
-      if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
-      if (/^\d{2}\/\d{2}\/\d{4}$/.test(v)) {
-        const [d, m, y] = v.split('/');
-        return `${y}-${m}-${d}`;
-      }
-      return v;
+    function applyDiaryPayload(payload = {}) {
+      diaryTitle.value = payload.title || '';
+      diaryCategory.value = payload.category || '';
+      diaryTags.value = payload.tags || '';
+      diaryEditor.innerHTML = payload.contentHtml || '<p></p>';
+      if (!diaryEditor.innerHTML.trim()) diaryEditor.innerHTML = '<p></p>';
+      renderTagPreview();
+      setDiaryUpdatedInfo(payload.updatedAt || '');
+    }
+
+    function buildDiarySearchText(item) {
+      return [
+        item.date || '',
+        formatISODate(item.date || ''),
+        item.title || '',
+        item.category || '',
+        item.tags || '',
+        item.preview || '',
+        item.plainText || ''
+      ].join(' ').toLowerCase();
     }
 
     function renderDiaryDatesList(filter = '') {
-      const f = normalizeSearchToISO(filter).toLowerCase();
-      const filtered = diaryDatesCache.filter(date => {
-        if (!f) return true;
-        return date.toLowerCase().includes(f) || formatISODate(date).toLowerCase().includes(filter.toLowerCase());
-      });
+      const q = String(filter || '').trim().toLowerCase();
+      const filtered = diaryDatesCache.filter(item => !q || buildDiarySearchText(item).includes(q));
 
       diaryDatesList.innerHTML = '';
       diaryDatesEmpty.style.display = filtered.length ? 'none' : 'block';
 
-      filtered.forEach(date => {
+      filtered.forEach(item => {
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = `diary-date-item${date === currentDiaryDate ? ' active' : ''}`;
+        btn.className = `diary-date-item${item.date === currentDiaryDate ? ' active' : ''}`;
+
+        const preview = (item.preview || '').slice(0, 60);
         btn.innerHTML = `
           <span class="diary-date-main">
-            <span class="diary-date-label">${formatISODate(date)}</span>
-            <span class="diary-date-sub">${date === getTodayISO() ? 'Hoje' : 'Registro diário'}</span>
+            <span class="diary-date-label">${formatISODate(item.date)}</span>
+            <span class="diary-date-sub">${escapeHtml(item.title || 'Sem título')}</span>
+            <span class="diary-date-sub">${escapeHtml(preview || 'Registro diário')}</span>
+            <span class="diary-date-tags">${escapeHtml([item.category || '', item.tags || ''].filter(Boolean).join(' • '))}</span>
           </span>
         `;
-        btn.addEventListener('click', async () => {
-          await navigateToDiaryDate(date);
-        });
+        btn.addEventListener('click', async () => { await navigateToDiaryDate(item.date); });
         diaryDatesList.appendChild(btn);
       });
     }
@@ -1040,11 +1045,30 @@
       try {
         const s = getSession();
         const data = await apiGet('listDiaryDates', { token: s.token });
-        diaryDatesCache = Array.isArray(data.dates) ? data.dates.slice() : [];
-        if (!diaryDatesCache.includes(currentDiaryDate)) {
-          diaryDatesCache.unshift(currentDiaryDate);
-          diaryDatesCache = [...new Set(diaryDatesCache)].sort().reverse();
+        const rows = Array.isArray(data.items) ? data.items : [];
+        diaryDatesCache = rows.map(item => ({
+          date: normalizeDateInput(item.date || ''),
+          title: item.title || '',
+          category: item.category || '',
+          tags: item.tags || '',
+          preview: item.preview || '',
+          plainText: item.preview || ''
+        })).filter(item => item.date);
+
+        if (!diaryDatesCache.some(item => item.date === currentDiaryDate)) {
+          const local = loadDiaryLocal(currentDiaryDate);
+          diaryDatesCache.unshift({
+            date: currentDiaryDate,
+            title: local?.title || '',
+            category: local?.category || '',
+            tags: local?.tags || '',
+            preview: local?.plainText || ''
+          });
         }
+
+        const map = new Map();
+        diaryDatesCache.forEach(item => { if (!map.has(item.date)) map.set(item.date, item); });
+        diaryDatesCache = [...map.values()].sort((a,b) => b.date.localeCompare(a.date));
         renderDiaryDatesList(diarySearchInput.value);
       } catch (error) {
         console.error(error);
@@ -1053,16 +1077,20 @@
 
     async function loadDiaryFromServer(date) {
       const s = getSession();
-      return apiGet('loadDiary', { token: s.token, date });
+      return apiGet('loadDiary', { token: s.token, date: normalizeDateInput(date) });
     }
 
     async function saveDiaryToServer(date) {
       const s = getSession();
+      const payload = getDiaryLocalPayload(date);
       return apiPost('saveDiary', {
         token: s.token,
-        date,
-        title: diaryTitle.value || '',
-        contentHtml: getDiaryEditorContent()
+        date: payload.date,
+        title: payload.title,
+        category: payload.category,
+        tags: payload.tags,
+        contentHtml: payload.contentHtml,
+        plainText: payload.plainText
       });
     }
 
@@ -1071,32 +1099,33 @@
         showToast('Faça login para acessar o diário.');
         return;
       }
-
-      currentDiaryDate = date;
+      currentDiaryDate = normalizeDateInput(date) || getTodayISO();
       updateDiaryDateLabel();
 
-      const local = loadDiaryLocal(date);
+      const local = loadDiaryLocal(currentDiaryDate);
       if (local) {
-        diaryTitle.value = local.title || '';
-        setDiaryEditorContent(local.contentHtml || '');
-        setDiaryUpdatedInfo(local.updatedAt || '');
+        applyDiaryPayload(local);
+        updateBackupInfo(local.updatedAt ? `Último backup local: ${formatNow(new Date(local.updatedAt))}` : 'Backup local disponível.');
       } else {
-        diaryTitle.value = '';
-        setDiaryEditorContent('');
-        setDiaryUpdatedInfo('');
+        applyDiaryPayload({});
+        updateBackupInfo('Nenhum backup local para esta data.');
       }
 
       try {
-        const data = await loadDiaryFromServer(date);
-        diaryTitle.value = data.title || '';
-        setDiaryEditorContent(data.contentHtml || '');
-        setDiaryUpdatedInfo(data.updatedAt || '');
-        saveDiaryLocal(date);
+        const data = await loadDiaryFromServer(currentDiaryDate);
+        applyDiaryPayload({
+          title: data.title || '',
+          category: data.category || '',
+          tags: data.tags || '',
+          contentHtml: data.contentHtml || '<p></p>',
+          updatedAt: data.updatedAt || ''
+        });
+        saveDiaryLocal(currentDiaryDate);
         diaryDirty = false;
         setDiaryStatus('Conteúdo carregado', 'is-saved');
       } catch (error) {
-        setDiaryStatus('Modo local ativo', 'is-error');
         console.error(error);
+        setDiaryStatus('Modo local ativo', 'is-error');
       }
 
       await refreshDiaryDatesList();
@@ -1109,17 +1138,14 @@
       try {
         const response = await saveDiaryToServer(currentDiaryDate);
         diaryDirty = false;
-        setDiaryUpdatedInfo(new Date().toISOString());
+        const nowIso = new Date().toISOString();
+        setDiaryUpdatedInfo(nowIso);
         setDiaryStatus('Salvo automaticamente', 'is-saved');
-        if (!diaryDatesCache.includes(currentDiaryDate)) {
-          diaryDatesCache.unshift(currentDiaryDate);
-          diaryDatesCache = [...new Set(diaryDatesCache)].sort().reverse();
-        }
-        renderDiaryDatesList(diarySearchInput.value);
+        updateBackupInfo(`Último backup local: ${formatNow(new Date(localPayload.updatedAt))}`);
+        await refreshDiaryDatesList();
         if (showFeedback) showToast(response.message || `Diário de ${formatISODate(currentDiaryDate)} salvo.`);
       } catch (error) {
         console.error(error);
-        setDiaryUpdatedInfo(localPayload.updatedAt || '');
         setDiaryStatus('Salvo localmente • erro online', 'is-error');
         if (showFeedback) showToast(error.message || 'Erro ao salvar o diário.');
       }
@@ -1148,44 +1174,57 @@
       });
     }
 
-    function initDiaryEvents() {
-      bindDiaryToolbar();
+    function exportCurrentDiaryPdf() {
+      if (!isAuthenticated()) return showToast('Faça login para gerar o PDF do diário.');
+      const title = diaryTitle.value.trim() || 'Sem título';
+      const category = diaryCategory.value.trim();
+      const tags = diaryTags.value.trim();
+      const html = `
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <title>Diário - ${formatISODate(currentDiaryDate)}</title>
+            <style>
+              body{font-family:Georgia,serif;margin:40px;color:#111;line-height:1.7}
+              h1{font-size:28px;margin:0 0 8px}
+              .meta{font-size:14px;color:#555;margin-bottom:20px}
+              .box{border-top:1px solid #ddd;padding-top:18px}
+            </style>
+          </head>
+          <body>
+            <h1>${escapeHtml(title)}</h1>
+            <div class="meta">Data: ${formatISODate(currentDiaryDate)}${category ? ` • Categoria: ${escapeHtml(category)}` : ''}${tags ? ` • Tags: ${escapeHtml(tags)}` : ''}</div>
+            <div class="box">${diaryEditor.innerHTML}</div>
+          </body>
+        </html>
+      `;
+      const win = window.open('', '_blank');
+      if (!win) return showToast('Permita pop-ups para exportar o PDF do diário.');
+      win.document.open();
+      win.document.write(html);
+      win.document.close();
+      setTimeout(() => win.print(), 350);
+    }
 
+    function bindDiaryEvents() {
+      bindDiaryToolbar();
       diaryTitle.addEventListener('input', scheduleDiaryAutoSave);
+      diaryCategory.addEventListener('change', () => { renderTagPreview(); scheduleDiaryAutoSave(); });
+      diaryTags.addEventListener('input', () => { renderTagPreview(); scheduleDiaryAutoSave(); });
       diaryEditor.addEventListener('input', scheduleDiaryAutoSave);
 
-      prevDiaryBtn.addEventListener('click', async () => {
-        await navigateToDiaryDate(shiftDateISO(currentDiaryDate, -1));
-      });
-
-      nextDiaryBtn.addEventListener('click', async () => {
-        await navigateToDiaryDate(shiftDateISO(currentDiaryDate, 1));
-      });
-
-      todayDiaryBtn.addEventListener('click', async () => {
-        await navigateToDiaryDate(getTodayISO());
-      });
-
-      loadDiaryBtn.addEventListener('click', async () => {
-        await loadDiaryForDate(currentDiaryDate);
-        showToast(`Diário de ${formatISODate(currentDiaryDate)} carregado.`);
-      });
-
-      saveDiaryBtn.addEventListener('click', async () => {
-        await saveDiary(true);
-      });
-
-      diarySearchInput.addEventListener('input', () => {
-        renderDiaryDatesList(diarySearchInput.value);
-      });
-
+      prevDiaryBtn.addEventListener('click', async () => { await navigateToDiaryDate(shiftDateISO(currentDiaryDate, -1)); });
+      nextDiaryBtn.addEventListener('click', async () => { await navigateToDiaryDate(shiftDateISO(currentDiaryDate, 1)); });
+      todayDiaryBtn.addEventListener('click', async () => { await navigateToDiaryDate(getTodayISO()); });
+      loadDiaryBtn.addEventListener('click', async () => { await loadDiaryForDate(currentDiaryDate); showToast(`Diário de ${formatISODate(currentDiaryDate)} carregado.`); });
+      saveDiaryBtn.addEventListener('click', async () => { await saveDiary(true); });
+      diaryPdfBtn.addEventListener('click', exportCurrentDiaryPdf);
+      diarySearchInput.addEventListener('input', () => renderDiaryDatesList(diarySearchInput.value));
       diarySearchInput.addEventListener('keydown', async (event) => {
         if (event.key === 'Enter') {
           event.preventDefault();
-          const parsed = normalizeSearchToISO(diarySearchInput.value);
-          if (/^\d{4}-\d{2}-\d{2}$/.test(parsed)) {
-            await navigateToDiaryDate(parsed);
-          }
+          const date = normalizeDateInput(diarySearchInput.value);
+          if (date) await navigateToDiaryDate(date);
         }
       });
     }
@@ -1198,12 +1237,8 @@
 
     addRowBtn.addEventListener('click', () => {
       tableBody.appendChild(createRow());
-      updateOrderNumbers();
-      updateSelectionState();
-      updateMoveButtons();
-      saveLocalData();
-      scheduleRemoteAutoSave();
-      showToast('Nova linha adicionada.');
+      updateOrderNumbers(); updateSelectionState(); updateMoveButtons();
+      saveLocalData(); scheduleRemoteAutoSave(); showToast('Nova linha adicionada.');
     });
 
     moveUpBtn.addEventListener('click', () => {
@@ -1240,14 +1275,12 @@
 
     tableBody.addEventListener('change', (event) => {
       if (event.target.classList.contains('row-check')) return updateSelectionState();
-      saveLocalData();
-      scheduleRemoteAutoSave();
+      saveLocalData(); scheduleRemoteAutoSave();
     });
 
     tableBody.addEventListener('input', (event) => {
       if (event.target.classList.contains('row-check')) return;
-      saveLocalData();
-      scheduleRemoteAutoSave();
+      saveLocalData(); scheduleRemoteAutoSave();
     });
 
     function getTableTSV() {
@@ -1259,9 +1292,7 @@
       return lines.join('\n');
     }
 
-    function toCsvValue(value) {
-      return `"${String(value ?? '').replaceAll('"', '""')}"`;
-    }
+    function toCsvValue(value) { return `"${String(value ?? '').replaceAll('"', '""')}"`; }
 
     function getTableCSV() {
       const headers = ['Ordem', 'Objetivo', 'Prazo', 'Status', 'Observações'];
@@ -1288,35 +1319,26 @@
       const ok = await copyToClipboard(getTableTSV());
       const original = copyExcelBtn.textContent;
       copyExcelBtn.textContent = ok ? 'Copiado!' : 'Falha ao copiar';
-      if (ok) showToast('Tabela copiada para o Excel.');
-      else showToast('Não foi possível copiar automaticamente.');
+      showToast(ok ? 'Tabela copiada para o Excel.' : 'Não foi possível copiar automaticamente.');
       setTimeout(() => copyExcelBtn.textContent = original, 1500);
     });
 
     exportBtn.addEventListener('click', () => {
-      const payload = { version: 15, exportedAt: new Date().toISOString(), theme: getCurrentTheme(), rows: getRowsData() };
-      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const payload = { version: 17, exportedAt: new Date().toISOString(), theme: getCurrentTheme(), rows: getRowsData() };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type:'application/json' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
-      link.href = url;
-      link.download = 'objetivos-dados.json';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(url);
+      link.href = url; link.download = 'objetivos-dados.json';
+      document.body.appendChild(link); link.click(); link.remove(); URL.revokeObjectURL(url);
       showToast('Dados exportados em JSON com sucesso.');
     });
 
     exportCsvBtn.addEventListener('click', () => {
-      const blob = new Blob([getTableCSV()], { type: 'text/csv;charset=utf-8;' });
+      const blob = new Blob([getTableCSV()], { type:'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
-      link.href = url;
-      link.download = 'objetivos-dados.csv';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(url);
+      link.href = url; link.download = 'objetivos-dados.csv';
+      document.body.appendChild(link); link.click(); link.remove(); URL.revokeObjectURL(url);
       showToast('Dados exportados em CSV com sucesso.');
     });
 
@@ -1336,7 +1358,7 @@
           if (!confirm('Deseja importar os dados do arquivo? Os dados atuais serão substituídos.')) return;
           setRowsData(normalizeRows(parsed.rows));
           if (parsed.theme) applyTheme(parsed.theme, true);
-          savePayload({ version: 15, updatedAt: new Date().toISOString(), rows: getRowsData() });
+          savePayload({ version: 17, updatedAt: new Date().toISOString(), rows: getRowsData() });
           scheduleRemoteAutoSave();
           showToast('Dados importados com sucesso.');
         } catch {
@@ -1396,6 +1418,7 @@
     saveRemoteBtn.addEventListener('click', handleManualRemoteSave);
     loadRemoteBtn.addEventListener('click', handleManualRemoteLoad);
     loginForm.addEventListener('submit', handleLoginSubmit);
+
     window.addEventListener('beforeunload', () => {
       saveLocalData(true);
       if (currentDiaryDate) saveDiaryLocal(currentDiaryDate);
@@ -1412,8 +1435,9 @@
       updateDiaryDateLabel();
       setDiaryStatus('Sem alterações', '');
       setDiaryUpdatedInfo('');
+      renderTagPreview();
       initRadioPlayer();
-      initDiaryEvents();
+      bindDiaryEvents();
       updateSessionUI();
       await testConnection();
 
@@ -1433,11 +1457,11 @@
       } else {
         const local = loadDiaryLocal(currentDiaryDate);
         if (local) {
-          diaryTitle.value = local.title || '';
-          setDiaryEditorContent(local.contentHtml || '');
-          setDiaryUpdatedInfo(local.updatedAt || '');
+          applyDiaryPayload(local);
+          updateBackupInfo(local.updatedAt ? `Último backup local: ${formatNow(new Date(local.updatedAt))}` : 'Backup local disponível.');
         } else {
-          setDiaryEditorContent('');
+          diaryEditor.innerHTML = '<p></p>';
+          updateBackupInfo('Sem backup local carregado.');
         }
       }
     }
